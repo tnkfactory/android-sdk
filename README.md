@@ -1,5 +1,5 @@
-# android-sdk
-Tnk Publisher SDK
+# Tnk Publisher SDK (for Android)
+test
 
 ## Sample code
 
