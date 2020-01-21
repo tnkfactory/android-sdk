@@ -6,7 +6,7 @@
 
 ```gradle
 dependencies {
-    implementation 'com.tnkfactory.ad:xxx'
+    implementation 'com.tnkfactory.ad:android-sdk:1.0.0'
 }
 ```
 
