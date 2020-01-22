@@ -48,8 +48,8 @@ adItem.load();
         android:id="@+id/banner_ad_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffffff"
         android:layout_alignParentBottom="true"
+        android:background="#ffffffff"
         app:placement_id="TEST_BANNER_100"
         />
 ```
@@ -60,13 +60,6 @@ import com.tnkfactory.ad.*;
 ...
 
 BannerAdView bannerAdView = findViewById(R.id.banner_ad_view);
-bannerAdView.setListener(new AdListener() {
-        @Override
-        public void onError(AdItem adItem, AdError error) {
-            super.onError(adItem, error);
-        }
-    });
-
 bannerAdView.load();
 
 ```
