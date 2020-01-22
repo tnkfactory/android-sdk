@@ -15,7 +15,7 @@ AndroidManifest.xml 파일에 아래의 권한을 추가해주세요.
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
-Proguard 를 사용하시는 경우 Proguard 설정파일에 아래의 내용을 반드시 넣어주세요.
+Proguard 를 사용하시는 경우 Proguard 설정 파일에 아래의 내용을 반드시 넣어주세요.
 
 ```proguard
  -keep class com.tnkfactory.** { *;}
