@@ -24,13 +24,13 @@ Proguard 를 사용하시는 경우 Proguard 설정파일에 아래의 내용을
 ### Test Flight
 
 아래의 코드를 사용하어 간단하게 테스트 광고를 띄워보세요.
+> SDK import
+```java
+import com.tnkfactory.ad.*;
+```
 
 > 전면삽입 광고 (Interstitial Ad)
 ```java
-import com.tnkfactory.ad.*;
-
-...
-
 InterstitialAdItem adItem = new InterstitialAdItem(this,"TEST_INTERSTITIAL_V", new AdListener() {
         @Override
         public void onLoad(AdItem adItem) {
@@ -38,8 +38,7 @@ InterstitialAdItem adItem = new InterstitialAdItem(this,"TEST_INTERSTITIAL_V", n
         }
     });
 
-adItem.load();
-        
+adItem.load(); 
 ```
 > 배너 광고 (Banner Ad)
 
@@ -55,13 +54,8 @@ adItem.load();
 ```
 
 ```java
-import com.tnkfactory.ad.*;
-
-...
-
 BannerAdView bannerAdView = findViewById(R.id.banner_ad_view);
 bannerAdView.load();
-
 ```
 ### Publisher ID 등록하기
 
