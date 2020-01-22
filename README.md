@@ -43,14 +43,13 @@ adItem.load();
 > 배너 광고 (Banner Ad)
 
 ```xml
-    <com.tnkfactory.ad.BannerAdView
-        android:id="@+id/banner_ad_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#ffffffff"
-        app:placement_id="TEST_BANNER_100"
-        />
+<com.tnkfactory.ad.BannerAdView
+    android:id="@+id/banner_ad_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="#ffffffff"
+    app:placement_id="TEST_BANNER_100"/>
 ```
 
 ```java
