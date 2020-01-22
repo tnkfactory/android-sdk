@@ -25,6 +25,7 @@ Proguard 를 사용하시는 경우 Proguard 설정파일에 아래의 내용을
 
 아래의 코드를 사용하어 간단하게 테스트 광고를 띄워보세요.
 
+> 전면삽입 광고 (Interstitial Ad)
 ```java
 import com.tnkfactory.ad.*;
 
@@ -40,7 +41,35 @@ InterstitialAdItem adItem = new InterstitialAdItem(this,"TEST_INTERSTITIAL_V", n
 adItem.load();
         
 ```
+> 배너 광고 (Banner Ad)
 
+```xml
+    <com.tnkfactory.ad.BannerAdView
+        android:id="@+id/banner_ad_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffffff"
+        android:layout_alignParentBottom="true"
+        app:placement_id="TEST_BANNER_100"
+        />
+```
+
+```java
+import com.tnkfactory.ad.*;
+
+...
+
+BannerAdView bannerAdView = findViewById(R.id.banner_ad_view);
+bannerAdView.setListener(new AdListener() {
+        @Override
+        public void onError(AdItem adItem, AdError error) {
+            super.onError(adItem, error);
+        }
+    });
+
+bannerAdView.load();
+
+```
 ### Publisher ID 등록하기
 
 Test Flight 에서는 별도로 계정등록을 하지않아도 간단히 테스트를 진행할 수 있었습니다. 하지만 실제 광고를 받기 위해서는 우선 Tnk Publish Site 에서 Inventory를 등록하여 발급받은 ID 를 AndroidManifest.xml 파일에 추가하셔야합니다.
