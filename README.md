@@ -56,4 +56,6 @@ Test Flight 에서는 별도로 계정등록을 하지않아도 간단히 테스
 
 ## 5. 네이티브 광고 (Native Ad)
 
-## 6. 미디에이션 (Mediation)
+## 6. 동영상 광고 (Video Ad)
+
+## 7. 미디에이션 (Mediation)
