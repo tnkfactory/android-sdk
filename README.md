@@ -26,6 +26,10 @@ Proguard 를 사용하시는 경우 Proguard 설정파일에 아래의 내용을
 아래의 코드를 사용하어 간단하게 테스트 광고를 띄워보세요.
 
 ```java
+import com.tnkfactory.ad.*;
+
+...
+
 InterstitialAdItem adItem = new InterstitialAdItem(this,"TEST_INTERSTITIAL_V", new AdListener() {
         @Override
         public void onLoad(AdItem adItem) {
