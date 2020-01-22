@@ -10,6 +10,12 @@ dependencies {
 }
 ```
 
+AndroidManefest.xml 파일에 아래의 권한을 추가해주세요.
+
+```xml
+<uses-permission android:name="android.permission.INTERNET" />
+```
+
 ## Sample code
 
 ```java
