@@ -29,7 +29,7 @@ Proguard 를 사용하시는 경우 Proguard 설정 파일에 아래의 내용�
 import com.tnkfactory.ad.*;
 ```
 
-> 전면삽입 광고 (Interstitial Ad)
+> 전면 광고 (Interstitial Ad)
 ```java
 InterstitialAdItem adItem = new InterstitialAdItem(this,"TEST_INTERSTITIAL_V", new AdListener() {
         @Override
@@ -71,12 +71,11 @@ Test Flight 에서는 별도로 계정등록을 하지않아도 간단히 테스
 
 실제 ID 를 등록하면 위 Test Flight 코드에서는 더 이상 광고가 나타나지 않습니다. Tnk Publish Site 에서 광고 유형에 맞추어 Placement 를 등록하시고 등록한 Placement의 이름을 사용하셔야 실제 광고가 표시됩니다.
 
-## 2. 전면 삽입 광고 (Interstitial Ad)
+## 2. 전면 광고 (Interstitial Ad)
 
 ## 3. 배너광고 (Banner Ad)
 
 ## 4. 피드형 광고 (Feed Ad)
-
 
 ## 5. 네이티브 광고 (Native Ad)
 
