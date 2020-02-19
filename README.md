@@ -93,16 +93,16 @@ AdMob 로그인 후 메뉴에서 미디에이션 탭을 누르시면 아래 이�
 
 [미디에이션 그룹 만들기] 버튼을 클릭하셔서 그룹을 생성해 주세요. 
 
-![ex_screenshot](./google-mediation/img/mediation_guide_01.png)
+![mediation_guide_01](./google-mediation/img/mediation_guide_01.png)
 
 
 
 미디에이션 그룹 생성 시 맞춤 이벤트를 추가합니다.
 
-![ex_screenshot](./google-mediation/img/mediation_guide_02.png)
+![mediation_guide_02](./google-mediation/img/mediation_guide_02.png)
 
 
 
 맞춤 이벤트 추가 시 Class Name 항목에 개발중인 앱 프로젝트에 복사해 넣은 맞춤이벤트 어댑터의 실제 결로를 입력합니다.
 
-![ex_screenshot](./google-mediation/img/mediation_guide_03.png)
+![mediation_guide_03](./google-mediation/img/mediation_guide_03.png)
