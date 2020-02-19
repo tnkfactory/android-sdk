@@ -16,7 +16,7 @@ import com.tnkfactory.ad.InterstitialAdItem;
 public class TnkPubCustomInterstitial extends AdListener implements CustomEventInterstitial {
 
     private String TAG = "TNK_AD";
-    private String placementId = "YOUR-PLACEMENT-ID";
+    private String placementId = "YOUR-PLACEMENT-ID-HERE";
 
     private InterstitialAdItem interstitialAdItem;
     private CustomEventInterstitialListener mInterstitialListener;

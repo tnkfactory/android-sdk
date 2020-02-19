@@ -17,7 +17,7 @@ import com.tnkfactory.ad.BannerAdView;
 public class TnkPubCustomBanner extends AdListener implements CustomEventBanner {
 
     private String TAG = "TNK_AD";
-    private String placementId = "YOUR-PLACEMENT-ID";
+    private String placementId = "YOUR-PLACEMENT-ID-HERE";
 
     private BannerAdView bannerAdView;
     private CustomEventBannerListener mBannerListener;

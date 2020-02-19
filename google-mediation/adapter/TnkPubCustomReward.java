@@ -19,7 +19,7 @@ import com.tnkfactory.ad.InterstitialAdItem;
 public class TnkPubCustomReward extends AdListener implements MediationRewardedVideoAdAdapter {
 
     private String TAG = "TNK_AD";
-    private String placementId = "YOUR-PLACEMENT-ID";
+    private String placementId = "YOUR-PLACEMENT-ID-HERE";
 
     private InterstitialAdItem rewardAdItem;
     private MediationRewardedVideoAdListener mediationRewardedVideoAdListener;
