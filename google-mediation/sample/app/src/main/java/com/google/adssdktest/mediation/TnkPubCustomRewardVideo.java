@@ -16,7 +16,7 @@ import com.tnkfactory.ad.AdItem;
 import com.tnkfactory.ad.AdListener;
 import com.tnkfactory.ad.InterstitialAdItem;
 
-public class TnkPubCustomReward extends AdListener implements MediationRewardedVideoAdAdapter {
+public class TnkPubCustomRewardVideo extends AdListener implements MediationRewardedVideoAdAdapter {
 
     private String TAG = "TNK_AD";
     private String placementId = "YOUR-PLACEMENT-ID-HERE";
@@ -32,6 +32,8 @@ public class TnkPubCustomReward extends AdListener implements MediationRewardedV
                            MediationRewardedVideoAdListener listener,
                            Bundle serverParameters,
                            Bundle mediationExtras) {
+
+        Log.i(TAG, "Tnk Pub Reward Video Ad initialize");
 
         mediationRewardedVideoAdListener = listener;
 
@@ -51,6 +53,8 @@ public class TnkPubCustomReward extends AdListener implements MediationRewardedV
 
     @Override
     public void loadAd(MediationAdRequest mediationAdRequest, Bundle bundle, Bundle bundle1) {
+        Log.i(TAG, "Tnk Pub Reward Video Ad loadAd");
+
         // Tnk Pub 리워드 광고 로드
         if (rewardAdItem != null) {
             rewardAdItem.load();
@@ -59,6 +63,8 @@ public class TnkPubCustomReward extends AdListener implements MediationRewardedV
 
     @Override
     public void showVideo() {
+        Log.i(TAG, "Tnk Pub Reward Video Ad showVideo");
+
         // Tnk Pub 리워드 광고 노출
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
@@ -79,14 +85,14 @@ public class TnkPubCustomReward extends AdListener implements MediationRewardedV
     @Override
     public void onLoad(AdItem adItem) {
         super.onLoad(adItem);
-        Log.i(TAG, "onLoad");
+        Log.i(TAG, "Tnk Pub Reward Video Ad onLoad");
         mediationRewardedVideoAdListener.onAdLoaded(this);
     }
 
     @Override
     public void onShow(AdItem adItem) {
         super.onShow(adItem);
-        Log.i(TAG, "onShow");
+        Log.i(TAG, "Tnk Pub Reward Video Ad onShow");
         mediationRewardedVideoAdListener.onAdOpened(this);
         mediationRewardedVideoAdListener.onVideoStarted(this);
     }
@@ -94,14 +100,14 @@ public class TnkPubCustomReward extends AdListener implements MediationRewardedV
     @Override
     public void onClose(AdItem adItem, int type) {
         super.onClose(adItem, type);
-        Log.i(TAG, "onClose");
+        Log.i(TAG, "Tnk Pub Reward Video Ad onClose");
         mediationRewardedVideoAdListener.onAdClosed(this);
     }
 
     @Override
     public void onClick(AdItem adItem) {
         super.onClick(adItem);
-        Log.i(TAG, "onClick");
+        Log.i(TAG, "Tnk Pub Reward Video Ad onClick");
         mediationRewardedVideoAdListener.onAdClicked(this);
         mediationRewardedVideoAdListener.onAdLeftApplication(this);
     }
@@ -109,19 +115,20 @@ public class TnkPubCustomReward extends AdListener implements MediationRewardedV
     @Override
     public void onVideoCompletion(AdItem adItem, int verifyCode) {
         super.onVideoCompletion(adItem, verifyCode);
-        Log.i(TAG, "onVideoCompletion");
+        Log.i(TAG, "Tnk Pub Reward Video Ad onVideoCompletion verifyCode : " + verifyCode);
+        mediationRewardedVideoAdListener.onVideoCompleted(this);
 
         // 리워드 적립 성공 시 리워드 타입과 포상금을 AdMob에 전달
         // 사용하려는 의도에 맞게 커스텀하여 사용
-        if (verifyCode >= VIDEO_VERIFY_SUCCESS_SELF) {
-            mediationRewardedVideoAdListener.onRewarded(this, new TnkPubCustomRewardItem("Reward", 1));
-        }
+//        if (verifyCode >= VIDEO_VERIFY_SUCCESS_SELF) {
+            mediationRewardedVideoAdListener.onRewarded(this, new TnkPubCustomRewardVideoItem("123", 1));
+//        }
     }
 
     @Override
     public void onError(AdItem adItem, AdError error) {
         super.onError(adItem, error);
-        Log.e(TAG,"error code : " + error.getValue() + " / error msg : " + error.getMessage());
+        Log.e(TAG,"Tnk Pub Reward Video Ad error code : " + error.getValue() + " / msg : " + error.getMessage());
 
         switch (error) {
             // BAD_REQUEST
@@ -149,16 +156,16 @@ public class TnkPubCustomReward extends AdListener implements MediationRewardedV
 
     @Override
     public void onResume() {
-        Log.i(TAG, "resume");
+        Log.i(TAG, "Tnk Pub Reward Video Ad resume");
     }
 
     @Override
     public void onPause() {
-        Log.i(TAG, "pause");
+        Log.i(TAG, "Tnk Pub Reward Video Ad pause");
     }
 
     @Override
     public void onDestroy() {
-        Log.i(TAG, "destory");
+        Log.i(TAG, "Tnk Pub Reward Video Ad destory");
     }
 }

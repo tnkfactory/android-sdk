@@ -41,20 +41,20 @@ public class TnkPubCustomBanner extends AdListener implements CustomEventBanner 
     @Override
     public void onLoad(AdItem adItem) {
         super.onLoad(adItem);
-        Log.i(TAG, "onLoad");
+        Log.i(TAG, "Tnk Pub Banner onLoad");
         mBannerListener.onAdLoaded(bannerAdView);
     }
 
     @Override
     public void onShow(AdItem adItem) {
         super.onShow(adItem);
-        Log.i(TAG, "onShow");
+        Log.i(TAG, "Tnk Pub Banner onShow");
     }
 
     @Override
     public void onClick(AdItem adItem) {
         super.onClick(adItem);
-        Log.i(TAG, "onClick");
+        Log.i(TAG, "Tnk Pub Banner onClick");
         mBannerListener.onAdClicked();
         mBannerListener.onAdOpened();
         mBannerListener.onAdLeftApplication();
@@ -63,7 +63,7 @@ public class TnkPubCustomBanner extends AdListener implements CustomEventBanner 
     @Override
     public void onError(AdItem adItem, AdError error) {
         super.onError(adItem, error);
-        Log.e(TAG,"error code : " + error.getValue() + " / error msg : " + error.getMessage());
+        Log.e(TAG,"Tnk Pub Banner error code : " + error.getValue() + " / msg : " + error.getMessage());
 
         switch (error) {
             // BAD_REQUEST
@@ -91,17 +91,17 @@ public class TnkPubCustomBanner extends AdListener implements CustomEventBanner 
 
     @Override
     public void onResume() {
-        Log.i(TAG, "resume");
+        Log.i(TAG, "Tnk Pub Banner resume");
     }
 
     @Override
     public void onPause() {
-        Log.i(TAG, "pause");
+        Log.i(TAG, "Tnk Pub Banner pause");
     }
 
     @Override
     public void onDestroy() {
-        Log.i(TAG, "destroy");
+        Log.i(TAG, "Tnk Pub Banner destroy");
     }
 
 }

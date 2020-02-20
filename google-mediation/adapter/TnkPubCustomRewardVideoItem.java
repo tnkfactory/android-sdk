@@ -1,12 +1,13 @@
 package com.google.adssdktest.mediation;
 
+
 import com.google.android.gms.ads.reward.RewardItem;
 
-public class TnkPubCustomRewardItem implements RewardItem {
+public class TnkPubCustomRewardVideoItem implements RewardItem {
     private final String type;
     private final int amount;
 
-    public TnkPubCustomRewardItem(String type, int amount) {
+    public TnkPubCustomRewardVideoItem(String type, int amount) {
         this.type = type;
         this.amount = amount;
     }

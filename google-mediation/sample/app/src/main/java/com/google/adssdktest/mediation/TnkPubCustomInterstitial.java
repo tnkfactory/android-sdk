@@ -1,5 +1,6 @@
 package com.google.adssdktest.mediation;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,8 @@ public class TnkPubCustomInterstitial extends AdListener implements CustomEventI
     private InterstitialAdItem interstitialAdItem;
     private CustomEventInterstitialListener mInterstitialListener;
 
+    private Context mContext = null;
+
     @Override
     public void requestInterstitialAd(Context context,
                                       CustomEventInterstitialListener listener,
@@ -33,39 +36,53 @@ public class TnkPubCustomInterstitial extends AdListener implements CustomEventI
         interstitialAdItem.load();
 
         mInterstitialListener = listener;
+        mContext = context;
     }
 
     @Override
     public void showInterstitial() {
         // Tnk Pub 전면 광고 노출
-        interstitialAdItem.show();
+        try {
+            interstitialAdItem.show();
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void onLoad(AdItem adItem) {
         super.onLoad(adItem);
-        Log.i(TAG, "onLoad");
+        Log.i(TAG, "Tnk Pub Interstitial Ad onLoad");
         mInterstitialListener.onAdLoaded();
     }
 
     @Override
     public void onShow(AdItem adItem) {
         super.onShow(adItem);
-        Log.i(TAG, "onShow");
+        Log.i(TAG, "Tnk Pub Interstitial Ad onShow");
         mInterstitialListener.onAdOpened();
     }
 
     @Override
     public void onClose(AdItem adItem, int type) {
         super.onClose(adItem, type);
-        Log.i(TAG, "onClose");
+        Log.i(TAG, "Tnk Pub Interstitial Ad onClose type : " + type);
         mInterstitialListener.onAdClosed();
+
+        if (type == AdListener.CLOSE_EXIT) {
+            // 앱 종료 기능 추가 지점
+
+            if (mContext != null && mContext instanceof Activity) {
+                ((Activity) mContext).finish();
+            }
+        }
     }
 
     @Override
     public void onClick(AdItem adItem) {
         super.onClick(adItem);
-        Log.i(TAG, "onClick");
+        Log.i(TAG, "Tnk Pub Interstitial Ad onClick");
         mInterstitialListener.onAdClicked();
         mInterstitialListener.onAdLeftApplication();
     }
@@ -73,7 +90,7 @@ public class TnkPubCustomInterstitial extends AdListener implements CustomEventI
     @Override
     public void onError(AdItem adItem, AdError error) {
         super.onError(adItem, error);
-        Log.e(TAG,"error code : " + error.getValue() + " / error msg : " + error.getMessage());
+        Log.e(TAG,"Tnk Pub Interstitial Ad error code : " + error.getValue() + " / msg : " + error.getMessage());
 
         switch (error) {
             // BAD_REQUEST
@@ -101,16 +118,16 @@ public class TnkPubCustomInterstitial extends AdListener implements CustomEventI
 
     @Override
     public void onResume() {
-        Log.i(TAG, "resume");
+        Log.i(TAG, "Tnk Pub Interstitial Ad resume");
     }
 
     @Override
     public void onPause() {
-        Log.i(TAG, "pause");
+        Log.i(TAG, "Tnk Pub Interstitial Ad pause");
     }
 
     @Override
     public void onDestroy() {
-        Log.i(TAG, "destory");
+        Log.i(TAG, "Tnk Pub Interstitial Ad destory");
     }
 }
