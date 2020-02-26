@@ -120,9 +120,9 @@ public class TnkPubCustomRewardVideo extends AdListener implements MediationRewa
 
         // 리워드 적립 성공 시 리워드 타입과 포상금을 AdMob에 전달
         // 사용하려는 의도에 맞게 커스텀하여 사용
-//        if (verifyCode >= VIDEO_VERIFY_SUCCESS_SELF) {
-            mediationRewardedVideoAdListener.onRewarded(this, new TnkPubCustomRewardVideoItem("123", 1));
-//        }
+       if (verifyCode >= VIDEO_VERIFY_SUCCESS_SELF) {
+            mediationRewardedVideoAdListener.onRewarded(this, new TnkPubCustomRewardVideoItem("Type", 1));
+       }
     }
 
     @Override

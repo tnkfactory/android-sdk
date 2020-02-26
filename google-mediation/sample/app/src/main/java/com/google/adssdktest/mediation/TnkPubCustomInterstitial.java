@@ -46,7 +46,6 @@ public class TnkPubCustomInterstitial extends AdListener implements CustomEventI
             interstitialAdItem.show();
         } catch (Exception e) {
             Log.e(TAG, e.getMessage());
-            e.printStackTrace();
         }
     }
 
