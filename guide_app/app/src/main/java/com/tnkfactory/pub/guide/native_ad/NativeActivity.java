@@ -1,0 +1,135 @@
+package com.tnkfactory.pub.guide.native_ad;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import com.tnkfactory.ad.AdError;
+import com.tnkfactory.ad.AdItem;
+import com.tnkfactory.ad.AdListener;
+import com.tnkfactory.ad.NativeAdItem;
+import com.tnkfactory.ad.NativeViewBinder;
+import com.tnkfactory.pub.guide.Interstitial_ad.InterstitialActivity;
+import com.tnkfactory.pub.guide.R;
+
+public class NativeActivity extends AppCompatActivity {
+
+    private Button loadBtn;
+    private Button showBtn;
+    private NativeAdItem nativeAdItem;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_native);
+
+        // 네이티브 광고 로드 버튼
+        loadBtn = findViewById(R.id.btn_native_load);
+        loadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadNativeAd();
+            }
+        });
+
+        // 네이티브 광고 노출 버튼
+        showBtn = findViewById(R.id.btn_native_show);
+        showBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showNativeAd();
+            }
+        });
+    }
+
+    // 네이티브 광고 로드
+    private void loadNativeAd() {
+        nativeAdItem = new NativeAdItem(this, "TEST_NATIVE");
+        nativeAdItem.setListener(new AdListener() {
+            /**
+             * 광고 처리중 오류 발생시 호출됨
+             * @param adItem 이벤트 대상이되는 AdItem 객체
+             * @param error AdError
+             */
+            @Override
+            public void onError(AdItem adItem, AdError error) {
+                Toast.makeText(NativeActivity.this, "Native Ad Error : " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+            /**
+             * 광고 load() 후 광고가 도착하면 호출됨
+             * @param adItem 이벤트 대상이되는 AdItem 객체
+             */
+            @Override
+            public void onLoad(AdItem adItem) {
+                Toast.makeText(NativeActivity.this, "Native Ad Load Complete", Toast.LENGTH_SHORT).show();
+                showBtn.setVisibility(View.VISIBLE);
+            }
+
+            /**
+             * 광고 화면이 화면이 나타나는 시점에 호출된다.
+             * @param adItem 이벤트 대상이되는 AdItem 객체
+             */
+            @Override
+            public void onShow(AdItem adItem) {
+                showBtn.setVisibility(View.INVISIBLE);
+            }
+
+            /**
+             * 광고 클릭시 호출됨
+             * 광고 화면은 닫히지 않음
+             * @param adItem 이벤트 대상이되는 AdItem 객체
+             */
+            @Override
+            public void onClick(AdItem adItem) {
+            }
+
+            /**
+             * 화면 닫힐 때 호출됨 (배너는 다른 광고가 로딩될때 이전 광고에 대하여 호출됨, native 는 detach 시점에 호출됨)
+             * @param adItem 이벤트 대상이되는 AdItem 객체
+             * @param type 0:simple close, 1: auto close, 2:exit
+             */
+            @Override
+            public void onClose(AdItem adItem, int type) {
+            }
+        });
+
+        nativeAdItem.load();
+
+    }
+
+    // 네이티브 광고 노출
+    private void showNativeAd() {
+
+        if (nativeAdItem != null & nativeAdItem.isLoaded()) {
+
+            // 네이티브 광고가 삽입될 컨테이너 초기화
+            ViewGroup adContainer = findViewById(R.id.native_ad_container);
+            adContainer.removeAllViews();
+
+            // 네이티브 아이템 레이아웃 삽입
+            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            RelativeLayout adItemView = (RelativeLayout) inflater.inflate(R.layout.native_ad_item, null);
+            adContainer.addView(adItemView);
+
+            // 네이티브 바인더 셋팅
+            NativeViewBinder binder = new NativeViewBinder(R.id.native_ad_content);
+            binder.iconId(R.id.native_ad_icon)
+                    .titleId(R.id.native_ad_title)
+                    .textId(R.id.native_ad_desc)
+                    .starRatingId(R.id.native_ad_rating)
+                    .watermarkIconId(R.id.native_ad_watermark_container)
+                    .addClickView(R.id.native_ad_content);
+
+            // 광고 노출
+            nativeAdItem.attach(adContainer, binder);
+        }
+    }
+}

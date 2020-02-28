@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Interstitial_ad.InterstitialActivity">
+
+    <Button
+        android:id="@+id/btn_interstitial_load"
+        android:text="Interstitial Ad Load"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/btn_interstitial_show"
+        android:text="Interstitial Ad Show"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/btn_interstitial_load"
+        android:visibility="invisible"
+        android:textAllCaps="false"/>
+
+</RelativeLayout>

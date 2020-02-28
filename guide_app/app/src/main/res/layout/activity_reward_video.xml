@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Interstitial_ad.RewardVideoActivity">
+
+    <Button
+        android:id="@+id/btn_interstitial_reward_load"
+        android:text="Reward Video Ad Load"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/btn_interstitial_reward_show"
+        android:text="Reward Video Ad Show"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/btn_interstitial_reward_load"
+        android:visibility="invisible"
+        android:textAllCaps="false"/>
+
+</RelativeLayout>

@@ -6,7 +6,7 @@
 
 ```gradle
 dependencies {
-    implementation 'com.tnkfactory.ad:android-sdk:1.0.3'
+    implementation 'com.tnkfactory.ad:android-sdk:1.0.4'
 }
 ```
 
@@ -71,15 +71,379 @@ Test Flight 에서는 별도로 계정등록을 하지않아도 간단히 테스
 
 실제 ID 를 등록하면 위 Test Flight 코드에서는 더 이상 광고가 나타나지 않습니다. Tnk Publish Site 에서 광고 유형에 맞추어 Placement 를 등록하시고 등록한 Placement의 이름을 사용하셔야 실제 광고가 표시됩니다.
 
+
+
 ## 2. 전면 광고 (Interstitial Ad)
+
+> 전면 광고 로드
+
+```java
+InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this, "YOUR-PlACEMENT-ID");
+interstitialAdItem.load();
+```
+
+> 전면 광고 노출
+
+로드 완료 후 진행합니다.
+
+```java
+if (interstitialAdItem.isLoaded()) {
+		interstitialAdItem.show();
+}
+```
+
+
 
 ## 3. 배너광고 (Banner Ad)
 
+배너 광고를 사용하는 방법은 Xml 방식과 뷰 동적 생성 방식 두 가지가 있습니다.
+
+> Xml 뷰 삽입 방식
+
+레이아웃 Xml 내에 아래와 같이 BannerAdView를 넣어줍니다.
+
+이때 Placement ID를 입력해줍니다.
+
+```xml
+<com.tnkfactory.ad.BannerAdView
+		android:id="@+id/banner_ad_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:placement_id="YOUR-PLACEMENT-ID" />
+```
+
+배너 광고를 로드해줍니다.
+
+```java
+BannerAdView bannerAdView = findViewById(R.id.banner_ad_view);
+bannerAdView.load();
+```
+
+
+
+> 뷰 동적 생성 방식
+
+Placement ID를 입력하여 BannerAdView를 생성 후 배너 광고를 로드해줍니다.
+
+```java
+BannerAdView bannerAdView = new BannerAdView(this, "YOUR-PLACEMENT-ID");
+bannerAdView.load();
+```
+
+
+
 ## 4. 피드형 광고 (Feed Ad)
+
+피드형 광고를 사용하는 방법은 Xml 방식과 뷰 동적 생성 방식 두 가지가 있습니다.
+
+> Xml 뷰 삽입 방식
+
+레이아웃 Xml 내에 아래와 같이 FeedAdView를 넣어줍니다.
+
+이때 Placement ID를 입력해줍니다.
+
+```xml
+<com.tnkfactory.ad.FeedAdView
+		android:id="@+id/feed_ad_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:placement_id="YOUR-PLACEMENT-ID"/>
+```
+
+```
+FeedAdView feedAdView = findViewById(R.id.feed_ad_view);
+feedAdView.load();
+```
+
+
+
+> 뷰 동적 생성 방식
+
+코드로 Placement ID를 사용하여 FeedAdView를 생성 후 피드형 광고를 로드해줍니다.
+
+```
+FeedAdView feedAdView = new FeedAdView(this, "YOUR-PLACEMENT-ID");
+```
+
+
 
 ## 5. 네이티브 광고 (Native Ad)
 
+> 레이아웃 생성 (native_ad_item.xml)
+
+네이티브 광고를 보여줄 레이아웃을 생성합니다.
+
+```xml
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:padding="6dp"
+	android:background="#FFFFFF">
+
+	<RelativeLayout
+		android:id="@+id/native_ad_image_layout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<FrameLayout
+			android:id="@+id/native_ad_content"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			tools:background="#FF5722"
+			tools:layout_height="300dp" />
+		
+		<ImageView
+			android:id="@+id/native_ad_watermark_container"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true"
+			tools:background="#FFEB3B" />
+	</RelativeLayout>
+
+	<TextView
+		android:id="@+id/native_ad_rating"
+		android:layout_width="100dp"
+		android:layout_height="20dp"
+		android:layout_centerHorizontal="true"
+		android:layout_below="@id/native_ad_image_layout"
+		android:layout_marginTop="5dp"
+		android:layout_marginLeft="5dp"
+		android:textColor="#ffffffff"
+		android:textSize="16dp"/>
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="5dp"
+		android:layout_below="@+id/native_ad_rating">
+
+		<ImageView
+			android:id="@+id/native_ad_icon"
+			android:layout_width="72dp"
+			android:layout_height="72dp"
+			android:layout_alignParentTop="true"
+			android:layout_alignParentLeft="true"
+			android:padding="4dp"
+			android:scaleType="fitXY"
+			tools:background="#00BCD4" />
+		<TextView
+			android:id="@+id/native_ad_title"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_toRightOf="@id/native_ad_icon"
+			android:layout_alignParentTop="true"
+			android:layout_marginTop="3dp"
+			android:layout_marginLeft="8dp"
+			android:gravity="center_vertical"
+			android:textColor="#ff020202"
+			android:textSize="17sp"
+			tools:background="#03A9F4" />
+		<TextView
+			android:id="@+id/native_ad_desc"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_toRightOf="@id/native_ad_icon"
+			android:layout_below="@id/native_ad_title"
+			android:layout_marginLeft="8dp"
+			android:layout_marginTop="8dp"
+			android:gravity="center_vertical"
+			android:textColor="#ff179dce"
+			android:textSize="13sp"
+			tools:background="#2196F3" />
+	</RelativeLayout>
+</RelativeLayout>
+```
+
+> 네이티브 광고 로드
+
+```java
+NativeAdItem nativeAdItem = new NativeAdItem(this, "YOUR-PlACEMENT-ID");
+nativeAdItem.load();
+```
+
+> 네이티브 광고 노출
+
+로드 완료 후 진행합니다.
+
+```java
+if (nativeAdItem != null & nativeAdItem.isLoaded()) {
+
+    // 네이티브 광고가 삽입될 컨테이너 초기화
+    ViewGroup adContainer = findViewById(R.id.native_ad_container);
+    adContainer.removeAllViews();
+
+    // 네이티브 아이템 레이아웃 삽입
+    LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    RelativeLayout adItemView = (RelativeLayout) inflater.inflate(R.layout.native_ad_item, null);
+    adContainer.addView(adItemView);
+
+    // 네이티브 바인더 셋팅
+    NativeViewBinder binder = new NativeViewBinder(R.id.native_ad_content);
+    binder.iconId(R.id.native_ad_icon)
+            .titleId(R.id.native_ad_title)
+            .textId(R.id.native_ad_desc)
+            .starRatingId(R.id.native_ad_rating)
+            .watermarkIconId(R.id.native_ad_watermark_container)
+            .addClickView(R.id.native_ad_content);
+
+    // 광고 노출
+    nativeAdItem.attach(adContainer, binder);
+}
+```
+
+
+
 ## 6. 동영상 광고 (Video Ad)
+
+전면 광고 적용을 위해서는 Tnk Pub사이트에서 앱 등록 및 SDK 설정하기가 우선 선행되어야합니다.
+
+동영상 광고는 전면 광고와 사용 방법이 같습니다.
+
+> 전면 광고 로드
+
+```java
+InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this, "YOUR-PlACEMENT-ID");
+interstitialAdItem.load();
+```
+
+> 전면 광고 노출
+
+로드 완료 후 진행합니다.
+
+```java
+if (interstitialAdItem.isLoaded()) {
+		interstitialAdItem.show();
+}
+```
+
+> 리워드 동영상 광고 적립 여부 확인
+
+리워드 동영상 광고의 경우 재생 완료 후 AdListener를 사용하여 적립 여부를 확인할 수 있습니다.
+
+```java
+interstitialAdItem.setListener(new AdListener() {
+ 
+    ...
+
+    /**
+     * 광고의 재생이 완료되었을 경우 호출됩니다.
+     * @param adItem 광고 아이템
+     * @param verifyCode 적립 여부
+     */
+    @Override
+    public void onVideoCompletion(AdItem adItem, int verifyCode) {
+        super.onVideoCompletion(adItem, verifyCode);
+
+        if (verifyCode >= VIDEO_VERIFY_SUCCESS_SELF) {
+            // 적립 성공
+        } else {
+            // 적립 실패
+        }
+    }
+
+    ...
+    
+});
+```
+
+
+
+## 7. AdListener
+
+전면, 배너, 피드형, 네이티브 등 모든 광고는 setListener()를 통해 AdListener를 등록하여 사용할 수 있습니다.
+
+```java
+public abstract class AdListener {
+
+    public static int CLOSE_SIMPLE = 0; // 클릭하지 않고 그냥 close
+    public static int CLOSE_AUTO = 1; // 자동 닫기 시간이 지나서 close 된 경우
+    public static int CLOSE_EXIT = 2; // 전면인 경우 종료 버튼으로 close
+
+    // video completion 확인 코드
+    public static int VIDEO_VERIFY_SUCCESS_S2S = 1; // 매체 서버를 통해서 검증됨
+    public static int VIDEO_VERIFY_SUCCESS_SELF = 0; // 매체 서버 URL이 설정되지 않아 Tnk 자체 검증
+    public static int VIDEO_VERIFY_FAILED_S2S = -1; // 매체 서버를 통해서 지급불가 판단됨
+    public static int VIDEO_VERIFY_FAILED_TIMEOUT = -2; // 매체 서버 호출시 타임아웃 발생
+    public static int VIDEO_VERIFY_FAILED_NO_DATA = -3; // 광고 송출 및 노출 이력 데이터가 없음
+    public static int VIDEO_VERIFY_FAILED_TEST_VIDEO = -4; // 테스트 동영상 광고임
+    public static int VIDEO_VERIFY_FAILED_ERROR = -9; // 그외 시스템 에러가 발생
+
+    /**
+     * 이벤트 메소드의 기본구현에서 출력하는 Log 메시지의 logTag 값을 반환한다.
+     * @return Log 출력용 Tag
+     */
+    public String logTag() {
+        return Logger.TNKAD_LOG;
+    }
+
+    /**
+     * 화면 닫힐 때 호출됨 (배너는 다른 광고가 로딩될때 이전 광고에 대하여 호출됨, native 는 detach 시점에 호출됨)
+     * @param adItem 이벤트 대상이되는 AdItem 객체
+     * @param type 0:simple close, 1: auto close, 2:exit
+     */
+    public void onClose(AdItem adItem, int type) {
+        // 기본 로깅 호출
+        Log.d(logTag(), adItem.getPlacementId() + " onClose : " + type);
+    }
+
+    /**
+     * 광고 클릭시 호출됨
+     * 광고 화면은 닫히지 않음
+     *
+     * @param adItem 이벤트 대상이되는 AdItem 객체
+     */
+    public void onClick(AdItem adItem) {
+        // 기본 로깅 호출
+        Log.d(logTag(), adItem.getPlacementId() + " onClick");
+    }
+
+    /**
+     * 광고 화면이 화면이 나타나는 시점에 호출된다.
+     *
+     * @param adItem 이벤트 대상이되는 AdItem 객체
+     */
+    public void onShow(AdItem adItem) {
+        // 기본 로깅 호출
+        Log.d(logTag(), adItem.getPlacementId() + " onShow");
+    }
+
+    /**
+     * 광고 처리중 오류 발생시 호출됨
+     *
+     * @param adItem 이벤트 대상이되는 AdItem 객체
+     * @param error AdError
+     */
+    public void onError(AdItem adItem, AdError error) {
+        // 기본 로깅 호출
+        Log.d(logTag(),adItem.getPlacementId() + " onError : " + error.getMessage());
+    }
+
+    /**
+     * 광고 load() 후 광고가 도착하면 호출됨
+     *
+     * @param adItem 이벤트 대상이되는 AdItem 객체
+     */
+    public void onLoad(AdItem adItem) {
+        // 기본 로깅 호출
+        Log.d(logTag(), adItem.getPlacementId() + " onLoad");
+    }
+
+    /**
+     * 동영상이 포함되어 있는 경우 동영상을 끝까지 시청하는 시점에 호출된다.
+     *
+     * @param adItem 이벤트 대상이되는 AdItem 객체
+     * @param verifyCode 동영상 시청 완료 콜백 결과.
+     */
+    public void onVideoCompletion(AdItem adItem, int verifyCode) {
+        // 기본 로깅 호출
+        Log.d(logTag(),adItem.getPlacementId() + " onVideoCompletion : " + verifyCode);
+    }
+}
+```
+
+
 
 ## 7. 미디에이션 (Mediation)
 
