@@ -23,16 +23,16 @@ public class FeedActivity extends AppCompatActivity {
         javaFeedLoad();
     }
 
-    // 배너 광고 - XML 뷰 삽입 방식
+    // 피드 광고 - XML 뷰 삽입 방식
     private void xmlFeedLoad() {
         FeedAdView feedAdView = findViewById(R.id.feed_ad_view);
         feedAdView.setListener(adListener);
 
-        // 배너 광고 로드
+        // 피드 광고 로드
         feedAdView.load();
     }
 
-    // 배너 광고 - 뷰 동적 생성 방식
+    // 피드 광고 - 뷰 동적 생성 방식
     private void javaFeedLoad() {
         RelativeLayout feedAdLayout = findViewById(R.id.feed_ad_layout);
         FeedAdView feedAdView = new FeedAdView(this, "TEST_FEED");
@@ -40,7 +40,7 @@ public class FeedActivity extends AppCompatActivity {
 
         feedAdView.setListener(adListener);
 
-        // 배너 광고 로드
+        // 피드 광고 로드
         feedAdView.load();
     }
 
