@@ -92,6 +92,35 @@ if (interstitialAdItem.isLoaded()) {
 }
 ```
 
+> 종료 시 전면 광고 사용 방법
+
+'2 Button' 프레임을 사용하여 앱 종료 시 전면 팝업 광고를 자연스럽게 삽입 가능합니다.
+
+해당 프레임을 사용하여 앱을 종료하기 위해서는 아래와 같이 AdListener의 onClose 메소드를 사용하면 됩니다.
+
+```java
+interstitialAdItem.setListener(new AdListener() {
+
+    ...
+
+    /**
+     * 화면 닫힐 때 호출됨 (배너는 다른 광고가 로딩될때 이전 광고에 대하여 호출됨, native 는 detach 시점에 호출됨)
+     * @param adItem 이벤트 대상이되는 AdItem 객체
+     * @param type 0:simple close, 1: auto close, 2:exit
+     */
+    @Override
+    public void onClose(AdItem adItem, int type) {
+        // 종료 버튼 선택 시 앱을 종료합니다.
+        if (type == AdListener.CLOSE_EXIT) {
+            MainActivity.this.finish();
+        }
+    }
+
+    ...
+
+});
+```
+
 
 
 ## 3. 배너광고 (Banner Ad)
@@ -118,8 +147,6 @@ if (interstitialAdItem.isLoaded()) {
 BannerAdView bannerAdView = findViewById(R.id.banner_ad_view);
 bannerAdView.load();
 ```
-
-
 
 > 뷰 동적 생성 방식
 
@@ -154,8 +181,6 @@ bannerAdView.load();
 FeedAdView feedAdView = findViewById(R.id.feed_ad_view);
 feedAdView.load();
 ```
-
-
 
 > 뷰 동적 생성 방식
 
@@ -350,15 +375,17 @@ interstitialAdItem.setListener(new AdListener() {
 
 
 
-## 7. AdListener
+## 7. AdListener 사용 방법
 
 전면, 배너, 피드형, 네이티브 등 모든 광고는 setListener()를 통해 AdListener를 등록하여 사용할 수 있습니다.
+
+필요한 메소드만 Override하여 사용하면 됩니다.
 
 ```java
 public abstract class AdListener {
 
     public static int CLOSE_SIMPLE = 0; // 클릭하지 않고 그냥 close
-    public static int CLOSE_AUTO = 1; // 자동 닫기 시간이 지나서 close 된 경우
+    public static int CLOSE_AUTO = 1; // 자동 닫기 시간이 지나서 close
     public static int CLOSE_EXIT = 2; // 전면인 경우 종료 버튼으로 close
 
     // video completion 확인 코드
@@ -371,74 +398,55 @@ public abstract class AdListener {
     public static int VIDEO_VERIFY_FAILED_ERROR = -9; // 그외 시스템 에러가 발생
 
     /**
-     * 이벤트 메소드의 기본구현에서 출력하는 Log 메시지의 logTag 값을 반환한다.
-     * @return Log 출력용 Tag
-     */
-    public String logTag() {
-        return Logger.TNKAD_LOG;
-    }
-
-    /**
      * 화면 닫힐 때 호출됨 (배너는 다른 광고가 로딩될때 이전 광고에 대하여 호출됨, native 는 detach 시점에 호출됨)
      * @param adItem 이벤트 대상이되는 AdItem 객체
      * @param type 0:simple close, 1: auto close, 2:exit
      */
     public void onClose(AdItem adItem, int type) {
-        // 기본 로깅 호출
-        Log.d(logTag(), adItem.getPlacementId() + " onClose : " + type);
+      
     }
 
     /**
      * 광고 클릭시 호출됨
      * 광고 화면은 닫히지 않음
-     *
      * @param adItem 이벤트 대상이되는 AdItem 객체
      */
     public void onClick(AdItem adItem) {
-        // 기본 로깅 호출
-        Log.d(logTag(), adItem.getPlacementId() + " onClick");
+      
     }
 
     /**
      * 광고 화면이 화면이 나타나는 시점에 호출된다.
-     *
      * @param adItem 이벤트 대상이되는 AdItem 객체
      */
     public void onShow(AdItem adItem) {
-        // 기본 로깅 호출
-        Log.d(logTag(), adItem.getPlacementId() + " onShow");
+
     }
 
     /**
      * 광고 처리중 오류 발생시 호출됨
-     *
      * @param adItem 이벤트 대상이되는 AdItem 객체
      * @param error AdError
      */
     public void onError(AdItem adItem, AdError error) {
-        // 기본 로깅 호출
-        Log.d(logTag(),adItem.getPlacementId() + " onError : " + error.getMessage());
+
     }
 
     /**
      * 광고 load() 후 광고가 도착하면 호출됨
-     *
      * @param adItem 이벤트 대상이되는 AdItem 객체
      */
     public void onLoad(AdItem adItem) {
-        // 기본 로깅 호출
-        Log.d(logTag(), adItem.getPlacementId() + " onLoad");
+
     }
 
     /**
      * 동영상이 포함되어 있는 경우 동영상을 끝까지 시청하는 시점에 호출된다.
-     *
      * @param adItem 이벤트 대상이되는 AdItem 객체
      * @param verifyCode 동영상 시청 완료 콜백 결과.
      */
     public void onVideoCompletion(AdItem adItem, int verifyCode) {
-        // 기본 로깅 호출
-        Log.d(logTag(),adItem.getPlacementId() + " onVideoCompletion : " + verifyCode);
+   
     }
 }
 ```
@@ -457,16 +465,16 @@ AdMob 로그인 후 메뉴에서 미디에이션 탭을 누르시면 아래 이�
 
 [미디에이션 그룹 만들기] 버튼을 클릭하셔서 그룹을 생성해 주세요. 
 
-![mediation_guide_01](./google-mediation/img/mediation_guide_01.png)
+![mediation_guide_01](./google_mediation/img/mediation_guide_01.png)
 
 
 
 미디에이션 그룹 생성 시 맞춤 이벤트를 추가합니다.
 
-![mediation_guide_02](./google-mediation/img/mediation_guide_02.png)
+![mediation_guide_02](./google_mediation/img/mediation_guide_02.png)
 
 
 
 맞춤 이벤트 추가 시 Class Name 항목에 개발중인 앱 프로젝트에 복사해 넣은 맞춤이벤트 어댑터의 실제 결로를 입력합니다.
 
-![mediation_guide_03](./google-mediation/img/mediation_guide_03.png)
+![mediation_guide_03](./google_mediation/img/mediation_guide_03.png)
