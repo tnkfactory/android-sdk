@@ -13,6 +13,10 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.tnkfactory.ad.AdError;
+import com.tnkfactory.ad.AdItem;
+import com.tnkfactory.ad.AdListener;
+import com.tnkfactory.ad.InterstitialAdItem;
 import com.tnkfactory.pub.guide.Interstitial_ad.InterstitialActivity;
 import com.tnkfactory.pub.guide.Interstitial_ad.RewardVideoActivity;
 import com.tnkfactory.pub.guide.banner_ad.BannerActivity;
@@ -24,12 +28,16 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private InterstitialAdItem finishAdItem = null;
+    private boolean isClickBack = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         initLayout();
+        prepareFinishInterstitialAd();
     }
 
     // Sample layout
@@ -85,6 +93,57 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (isClickBack) {
+            return;
+        }
+
+        isClickBack = true;
+
+        if (finishAdItem != null && finishAdItem.isLoaded()) {
+            finishAdItem.show();
+        } else {
+            isClickBack = false;
+        }
+    }
+
+    // 종료 시 전면 광고 로드
+    private void prepareFinishInterstitialAd() {
+        InterstitialAdItem adItem = new InterstitialAdItem(this, "TEST_INTERSTITIAL_V_FINISH", new AdListener() {
+            @Override
+            public void onError(AdItem adItem, AdError error) {
+            }
+
+            @Override
+            public void onClose(AdItem adItem, int type) {
+
+                if (type == AdListener.CLOSE_EXIT) {
+                    MainActivity.this.finish();
+                } else {
+                    // 아니요 클릭시 광고 재로드
+                    prepareFinishInterstitialAd();
+                }
+            }
+
+            @Override
+            public void onClick(AdItem adItem) {
+            }
+
+            @Override
+            public void onShow(AdItem adItem) {
+                isClickBack = false;
+            }
+
+            @Override
+            public void onLoad(AdItem adItem) {
+                finishAdItem = (InterstitialAdItem) adItem;
+            }
+        });
+
+        adItem.load();
     }
 
     // Sample list adapter
