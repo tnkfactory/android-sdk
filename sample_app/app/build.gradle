@@ -26,5 +26,5 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:1.2.0-alpha01"
     
     // Tnk Pub SDK
-    implementation 'com.tnkfactory.ad:android-sdk:1.0.4'
+    implementation 'com.tnkfactory.ad:pub:1.0.1'
 }
