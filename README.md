@@ -4,9 +4,11 @@
 
 아래의 코드를 App Module의 build.gradle 파일에 추가해주세요.
 
+[![Download](https://api.bintray.com/packages/tnkfactory/android-sdk/android-sdk/images/download.svg)](https://bintray.com/tnkfactory/android-sdk/android-sdk/_latestVersion)
+
 ```gradle
 dependencies {
-    implementation 'com.tnkfactory.ad:android-sdk:1.0.4'
+    implementation 'com.tnkfactory.ad:android-sdk:x.y.z'
 }
 ```
 
