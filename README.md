@@ -322,8 +322,6 @@ if (nativeAdItem != null & nativeAdItem.isLoaded()) {
 
 ## 6. 동영상 광고 (Video Ad)
 
-전면 광고 적용을 위해서는 Tnk Pub사이트에서 앱 등록 및 SDK 설정하기가 우선 선행되어야합니다.
-
 동영상 광고는 전면 광고와 사용 방법이 같습니다.
 
 > 전면 광고 로드
@@ -455,7 +453,7 @@ public abstract class AdListener {
 
 ## 7. 미디에이션 (Mediation)
 
-[[AdMob 미디에이션 설정]](https://support.google.com/admob/answer/3124703?hl=ko) 을 선행 후 [[맞춤이벤트 어댑터]](./google-mediation/adapter)을 다운로드 받으셔서 개발중인 앱 프로젝트에 필요한 맞춤이벤트 어댑터를 복사하여 넣으신 후 해당 클래스의 placementId 변수에 발급받으신 ID를 넣어주시기 바랍니다.
+[[AdMob 미디에이션 설정]](https://support.google.com/admob/answer/3124703?hl=ko) 을 선행 후 [[맞춤이벤트 어댑터]](./google_mediation/adapter)을 다운로드 받으셔서 개발중인 앱 프로젝트에 필요한 맞춤이벤트 어댑터를 복사하여 넣으신 후 해당 클래스의 placementId 변수에 발급받으신 ID를 넣어주시기 바랍니다.
 
 
 
