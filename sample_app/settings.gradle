@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='tnk_sample_app'
+rootProject.name='tnk_sample_pub'
