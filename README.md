@@ -8,7 +8,7 @@
 
 ```gradle
 dependencies {
-    implementation 'com.tnkfactory.ad:android-sdk:x.y.z'
+    implementation 'com.tnkfactory.ad:pub:x.y.z'
 }
 ```
 
