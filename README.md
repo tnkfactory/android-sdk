@@ -62,6 +62,7 @@ bannerAdView.load();
 ```
 #### Test Flight 용 Placement 들
 아래와 같이 광고 유형별로 Test Flight 용 Placement 들을 제공하고 있습니다.
+
 - TEST_BANNER_100 : 배너 광고 (640x100)
 - TEST_BANNER_200 : 배너 광고 (640x200)
 - TEST_INTERSTITIAL_H : 전면 광고 가로
@@ -85,8 +86,6 @@ Test Flight 에서는 별도로 계정등록을 하지않아도 간단히 테스
 ```
 
 실제 ID 를 등록하면 위 Test Flight 코드에서는 더 이상 광고가 나타나지 않습니다. Tnk Publish Site 에서 광고 유형에 맞추어 Placement 를 등록하시고 등록한 Placement의 이름을 사용하셔야 실제 광고가 표시됩니다.
-
-
 
 ## 2. 전면 광고 (Interstitial Ad)
 
