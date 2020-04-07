@@ -62,7 +62,7 @@ bannerAdView.load();
 ```
 > Test Flight 용 Placement 들
 
-아래와 같이 광고 유형별로 Test Flight 용 Placement 들을 제공하고 있습니다. 아래의 Placement ID 를 사용하시면 별도로 계정이나 앱을 등록하지 않아도 간단하게 테스트 광고를 띄워보시 수 있습니다.
+아래와 같이 광고 유형별로 Test Flight 용 Placement 들을 제공하고 있습니다. 아래의 Placement ID 를 사용하시면 별도로 계정이나 앱을 등록하지 않아도 간단하게 테스트 광고를 띄워보실 수 있습니다.
 
 - TEST_BANNER_100 : 배너 광고 (640x100)
 - TEST_BANNER_200 : 배너 광고 (640x200)
