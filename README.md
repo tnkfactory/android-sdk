@@ -96,7 +96,7 @@ public void onCreate(Bundle savedInstanceState) {
 
 > 전면 광고 띄우기
 
-전면광고가 로드되는 시점에 바로 광고를 띄우려면 AdListener 를 설정합니다.
+전면광고가 로드되는 시점에 바로 광고를 띄우려면 AdListener 를 사용합니다.
 
 ```java
 public class MainActivity extends Activity {
@@ -105,10 +105,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
 ...
 
-        InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this,"PLACEMENT_TEST1");
+        InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this,"YOUR-PlACEMENT-ID");
 	interstitialAdItem.setLisenter(new AdListener() {
             @Override
             public void onLoad(AdItem adItem) {
@@ -122,9 +121,17 @@ public class MainActivity extends Activity {
 
 ```
 
+만약 광고를 로드하고 일정시간 후에 광고를 띄우시려면 아래와 같이 광고가 성공적으로 로딩되었는지 확인한 후 광고를 띄우실 수 있습니다.
+
 ```java
+InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this,"YOUR-PlACEMENT-ID");
+interstitialAdItem.load();
+
+...
+
+
 if (interstitialAdItem.isLoaded()) {
-		interstitialAdItem.show();
+    interstitialAdItem.show();
 }
 ```
 
