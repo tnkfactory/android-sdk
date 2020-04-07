@@ -60,7 +60,6 @@ adItem.load();
 BannerAdView bannerAdView = findViewById(R.id.banner_ad_view);
 bannerAdView.load();
 ```
-
 #### Test Flight 용 Placement 들
 아래와 같이 광고 유형별로 Test Flight 용 Placement 들을 제공하고 있습니다.
 - TEST_BANNER_100 : 배너 광고 (640x100)
