@@ -84,7 +84,7 @@ SDK 클래스들을 import 해주세요.
 import com.tnkfactory.ad.*;
 ```
 
-아래와 같이 전면광고 객체르 생성합니다.
+아래와 같이 전면광고 객체를 생성합니다.
 ```java
 @Override
 public void onCreate(Bundle savedInstanceState) {
@@ -94,9 +94,33 @@ public void onCreate(Bundle savedInstanceState) {
 ...
 ```
 
-> 전면 광고 노출
+> 전면 광고 띄우기
 
-로드 완료 후 진행합니다.
+전면광고가 로드되는 시점에 바로 광고를 띄우려면 AdListener 를 설정합니다.
+
+```java
+public class MainActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+...
+
+        InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this,"PLACEMENT_TEST1");
+	interstitialAdItem.setLisenter(new AdListener() {
+            @Override
+            public void onLoad(AdItem adItem) {
+                adItem.show();
+            }
+        });
+
+        interstitialAdItem.load();
+	
+...
+
+```
 
 ```java
 if (interstitialAdItem.isLoaded()) {
