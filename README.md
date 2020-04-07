@@ -32,7 +32,7 @@ Proguard 를 사용하시는 경우 Proguard 설정 파일에 아래의 내용�
 import com.tnkfactory.ad.*;
 ```
 
-#### 전면 광고 (Interstitial Ad)
+> 전면 광고 (Interstitial Ad)
 
 ```java
 InterstitialAdItem adItem = new InterstitialAdItem(this,"TEST_INTERSTITIAL_V", new AdListener() {
@@ -44,7 +44,7 @@ InterstitialAdItem adItem = new InterstitialAdItem(this,"TEST_INTERSTITIAL_V", n
 
 adItem.load(); 
 ```
-#### 배너 광고 (Banner Ad)
+> 배너 광고 (Banner Ad)
 
 ```xml
 <com.tnkfactory.ad.BannerAdView
