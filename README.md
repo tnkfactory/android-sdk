@@ -77,11 +77,21 @@ Test Flight 에서는 별도로 계정등록을 하지않아도 간단히 테스
 
 ## 2. 전면 광고 (Interstitial Ad)
 
-> 전면 광고 로드
+> 전면 광고 객체 생성
 
+SDK 클래스들을 import 해주세요.
 ```java
-InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this, "YOUR-PlACEMENT-ID");
-interstitialAdItem.load();
+import com.tnkfactory.ad.*;
+```
+
+아래와 같이 전면광고 객체르 생성합니다.
+```java
+@Override
+public void onCreate(Bundle savedInstanceState) {
+...
+
+    InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this, "YOUR-PlACEMENT-ID");
+...
 ```
 
 > 전면 광고 노출
