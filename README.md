@@ -26,7 +26,7 @@ Proguard 를 사용하시는 경우 Proguard 설정 파일에 아래의 내용�
 ### Test Flight
 
 아래의 코드를 사용하어 간단하게 테스트 광고를 띄워보세요.
-#### SDK import
+> SDK import
 
 ```java
 import com.tnkfactory.ad.*;
