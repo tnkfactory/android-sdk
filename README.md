@@ -60,6 +60,18 @@ adItem.load();
 BannerAdView bannerAdView = findViewById(R.id.banner_ad_view);
 bannerAdView.load();
 ```
+
+#### Test Flight 용 Placement 들
+아래와 같이 광고 유형별로 Test Flight 용 Placement 들을 제공하고 있습니다.
+- TEST_BANNER_100 : 배너 광고 (640x100)
+- TEST_BANNER_200 : 배너 광고 (640x200)
+- TEST_INTERSTITIAL_H : 전면 광고 가로
+- TEST_INTERSTITIAL_V : 전면 광고 세로
+- TEST_INTERSTITIAL_V_FINISH : 전면광고 세로 종료시 2버튼 형
+- TEST_FEED : 피드형 광고
+- TEST_NATIVE : 네이티브 광고
+- TEST_REWARD_V : 리워드 동영상 광고
+
 ### Publisher ID 등록하기
 
 Test Flight 에서는 별도로 계정등록을 하지않아도 간단히 테스트를 진행할 수 있었습니다. 하지만 실제 광고를 받기 위해서는 우선 Tnk Publish Site 에서 Inventory를 등록하여 발급받은 ID 를 AndroidManifest.xml 파일에 추가하셔야합니다.
@@ -79,7 +91,7 @@ Test Flight 에서는 별도로 계정등록을 하지않아도 간단히 테스
 
 ## 2. 전면 광고 (Interstitial Ad)
 
-#### 전면 광고 객체 생성
+### 전면 광고 객체 생성
 
 SDK 클래스들을 import 해주세요.
 ```java
@@ -96,7 +108,7 @@ public void onCreate(Bundle savedInstanceState) {
 ...
 ```
 
-#### 전면 광고 띄우기
+### 전면 광고 띄우기
 
 전면광고가 로드되는 시점에 바로 광고를 띄우려면 AdListener 를 사용합니다.
 
@@ -137,7 +149,7 @@ if (interstitialAdItem.isLoaded()) {
 }
 ```
 
-#### 종료 시 전면 광고 사용 방법
+### 종료 시 전면 광고 사용 방법
 
 '2 Button' 프레임을 사용하여 앱 종료 시 전면 팝업 광고를 자연스럽게 삽입 가능합니다.
 
