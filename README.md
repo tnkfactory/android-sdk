@@ -60,14 +60,14 @@ adItem.load();
 BannerAdView bannerAdView = findViewById(R.id.banner_ad_view);
 bannerAdView.load();
 ```
-#### Test Flight 용 Placement 들
-아래와 같이 광고 유형별로 Test Flight 용 Placement 들을 제공하고 있습니다.
+> Test Flight 용 Placement 들
+아래와 같이 광고 유형별로 Test Flight 용 Placement 들을 제공하고 있습니다. 아래의 Placement ID 를 사용하시면 별도로 계정이나 앱을 등록하지 않아도 간단하게 테스트 광고를 띄워보시 수 있습니다.
 
 - TEST_BANNER_100 : 배너 광고 (640x100)
 - TEST_BANNER_200 : 배너 광고 (640x200)
 - TEST_INTERSTITIAL_H : 전면 광고 가로
 - TEST_INTERSTITIAL_V : 전면 광고 세로
-- TEST_INTERSTITIAL_V_FINISH : 전면광고 세로 종료시 2버튼 형
+- TEST_INTERSTITIAL_V_FINISH : 전면 광고 세로 (종료시 2-Button 형)
 - TEST_FEED : 피드형 광고
 - TEST_NATIVE : 네이티브 광고
 - TEST_REWARD_V : 리워드 동영상 광고
@@ -149,9 +149,9 @@ if (interstitialAdItem.isLoaded()) {
 
 ### 종료 시 전면 광고 사용 방법
 
-'2 Button' 프레임을 사용하여 앱 종료 시 전면 팝업 광고를 자연스럽게 삽입 가능합니다.
+'2-Button' 프레임을 사용하여 앱 종료 시 전면 팝업 광고를 자연스럽게 삽입 가능합니다.
 
-해당 프레임을 사용하여 앱을 종료하기 위해서는 아래와 같이 AdListener의 onClose 메소드를 사용하면 됩니다.
+우선 Publisher Site 에서 해당 Placement의 프레임을 2-Button 프레임으로 설정하시고, 앱에서 종료버튼 클릭시 처리내용을 AdListener의 onClose() 에서 아래의 내용을 참고하여 구현하시면 됩니다.
 
 ```java
 interstitialAdItem.setListener(new AdListener() {
