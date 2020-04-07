@@ -1,5 +1,31 @@
 # Tnk Publisher SDK (for Android)
 
+## 목차
+
+1. [SDK 설정하기](#1-sdk-설정하기)
+   * [Test Flight](#test-flight)
+   * [Publisher ID 등록하기](#publisher-id-등록하기)
+2. [전면 광고 (Interstitial Ad)](#2-전면-광고-interstitial-ad)
+   * [전면 광고 객체 생성](#전면-광고-객체-생성)
+   * [전면 광고 띄우기](#전면-광고-띄우기)
+   * [종료 시 전면 광고 사용 방법](#종료-시-전면-광고-사용-방법)
+3. [배너 광고 (Banner Ad)](#3-배너-광고-banner-ad)
+   * [XML 뷰 삽입 방식](#xml-뷰-삽입-방식)
+   * [뷰 동적 생성 방식](#뷰-동적-생성-방식)
+4. [피드형 광고 (Feed Ad)](#4-피드형-광고-feed-ad)
+   * [XML 뷰 삽입 방식](#xml-뷰-삽입-방식-1)
+   * [뷰 동적 생성 방식](#뷰-동적-생성-방식-1)
+5. [네이티브 광고 (Native Ad)](#5-네이티브-광고-native-ad)
+   * [레이아웃 생성 (native_ad_item.xml)](#레이아웃-생성-native_ad_itemxml)
+   * [네이티브 광고 로드](#네이티브-광고-로드)
+   * [네이티브 광고 노출](#네이티브-광고-노출)
+6. [동영상 광고 (Video Ad)](#6-동영상-광고-video-ad)
+   * [전면 광고 로드](#전면-광고-로드)
+   * [전면 광고 노출](#전면-광고-노출)
+   * [리워드 동영상 광고 적립 여부 확인](#리워드-동영상-광고-적립-여부-확인)
+7. [AdListener 사용 방법](#7-adlistener-사용-방법)
+8. [미디에이션 (Mediation)](#8-미디에이션-mediation)
+
 ## 1. SDK 설정하기
 
 아래의 코드를 App Module의 build.gradle 파일에 추가해주세요.
@@ -179,13 +205,13 @@ interstitialAdItem.setListener(new AdListener() {
 
 
 
-## 3. 배너광고 (Banner Ad)
+## 3. 배너 광고 (Banner Ad)
 
 배너 광고를 사용하는 방법은 Xml 방식과 뷰 동적 생성 방식 두 가지가 있습니다.
 
-#### Xml 뷰 삽입 방식
+#### XML 뷰 삽입 방식
 
-레이아웃 Xml 내에 아래와 같이 BannerAdView를 넣어줍니다.
+레이아웃 XML 내에 아래와 같이 BannerAdView를 넣어줍니다.
 
 이때 Placement ID를 입력해줍니다.
 
@@ -507,7 +533,7 @@ public abstract class AdListener {
 
 
 
-## 7. 미디에이션 (Mediation)
+## 8. 미디에이션 (Mediation)
 
 [[AdMob 미디에이션 설정]](https://support.google.com/admob/answer/3124703?hl=ko) 을 선행 후 [[맞춤이벤트 어댑터]](./google_mediation/adapter)을 다운로드 받으셔서 개발중인 앱 프로젝트에 필요한 맞춤이벤트 어댑터를 복사하여 넣으신 후 해당 클래스의 placementId 변수에 발급받으신 ID를 넣어주시기 바랍니다.
 
