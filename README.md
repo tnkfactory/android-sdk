@@ -26,12 +26,14 @@ Proguard 를 사용하시는 경우 Proguard 설정 파일에 아래의 내용�
 ### Test Flight
 
 아래의 코드를 사용하어 간단하게 테스트 광고를 띄워보세요.
-> SDK import
+#### SDK import
+
 ```java
 import com.tnkfactory.ad.*;
 ```
 
-> 전면 광고 (Interstitial Ad)
+#### 전면 광고 (Interstitial Ad)
+
 ```java
 InterstitialAdItem adItem = new InterstitialAdItem(this,"TEST_INTERSTITIAL_V", new AdListener() {
         @Override
@@ -42,7 +44,7 @@ InterstitialAdItem adItem = new InterstitialAdItem(this,"TEST_INTERSTITIAL_V", n
 
 adItem.load(); 
 ```
-> 배너 광고 (Banner Ad)
+#### 배너 광고 (Banner Ad)
 
 ```xml
 <com.tnkfactory.ad.BannerAdView
@@ -77,7 +79,7 @@ Test Flight 에서는 별도로 계정등록을 하지않아도 간단히 테스
 
 ## 2. 전면 광고 (Interstitial Ad)
 
-> 전면 광고 객체 생성
+#### 전면 광고 객체 생성
 
 SDK 클래스들을 import 해주세요.
 ```java
@@ -94,7 +96,7 @@ public void onCreate(Bundle savedInstanceState) {
 ...
 ```
 
-> 전면 광고 띄우기
+#### 전면 광고 띄우기
 
 전면광고가 로드되는 시점에 바로 광고를 띄우려면 AdListener 를 사용합니다.
 
@@ -135,7 +137,7 @@ if (interstitialAdItem.isLoaded()) {
 }
 ```
 
-> 종료 시 전면 광고 사용 방법
+#### 종료 시 전면 광고 사용 방법
 
 '2 Button' 프레임을 사용하여 앱 종료 시 전면 팝업 광고를 자연스럽게 삽입 가능합니다.
 
@@ -170,7 +172,7 @@ interstitialAdItem.setListener(new AdListener() {
 
 배너 광고를 사용하는 방법은 Xml 방식과 뷰 동적 생성 방식 두 가지가 있습니다.
 
-> Xml 뷰 삽입 방식
+#### Xml 뷰 삽입 방식
 
 레이아웃 Xml 내에 아래와 같이 BannerAdView를 넣어줍니다.
 
@@ -191,7 +193,7 @@ BannerAdView bannerAdView = findViewById(R.id.banner_ad_view);
 bannerAdView.load();
 ```
 
-> 뷰 동적 생성 방식
+#### 뷰 동적 생성 방식
 
 Placement ID를 입력하여 BannerAdView를 생성 후 배너 광고를 로드해줍니다.
 
@@ -206,7 +208,7 @@ bannerAdView.load();
 
 피드형 광고를 사용하는 방법은 Xml 방식과 뷰 동적 생성 방식 두 가지가 있습니다.
 
-> Xml 뷰 삽입 방식
+#### Xml 뷰 삽입 방식
 
 레이아웃 Xml 내에 아래와 같이 FeedAdView를 넣어줍니다.
 
@@ -225,7 +227,7 @@ FeedAdView feedAdView = findViewById(R.id.feed_ad_view);
 feedAdView.load();
 ```
 
-> 뷰 동적 생성 방식
+#### 뷰 동적 생성 방식
 
 코드로 Placement ID를 사용하여 FeedAdView를 생성 후 피드형 광고를 로드해줍니다.
 
@@ -237,7 +239,7 @@ FeedAdView feedAdView = new FeedAdView(this, "YOUR-PLACEMENT-ID");
 
 ## 5. 네이티브 광고 (Native Ad)
 
-> 레이아웃 생성 (native_ad_item.xml)
+#### 레이아웃 생성 (native_ad_item.xml)
 
 네이티브 광고를 보여줄 레이아웃을 생성합니다.
 
@@ -324,14 +326,14 @@ FeedAdView feedAdView = new FeedAdView(this, "YOUR-PLACEMENT-ID");
 </RelativeLayout>
 ```
 
-> 네이티브 광고 로드
+#### 네이티브 광고 로드
 
 ```java
 NativeAdItem nativeAdItem = new NativeAdItem(this, "YOUR-PlACEMENT-ID");
 nativeAdItem.load();
 ```
 
-> 네이티브 광고 노출
+#### 네이티브 광고 노출
 
 로드 완료 후 진행합니다.
 
@@ -367,14 +369,14 @@ if (nativeAdItem != null & nativeAdItem.isLoaded()) {
 
 동영상 광고는 전면 광고와 사용 방법이 같습니다.
 
-> 전면 광고 로드
+#### 전면 광고 로드
 
 ```java
 InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this, "YOUR-PlACEMENT-ID");
 interstitialAdItem.load();
 ```
 
-> 전면 광고 노출
+#### 전면 광고 노출
 
 로드 완료 후 진행합니다.
 
@@ -384,7 +386,7 @@ if (interstitialAdItem.isLoaded()) {
 }
 ```
 
-> 리워드 동영상 광고 적립 여부 확인
+#### 리워드 동영상 광고 적립 여부 확인
 
 리워드 동영상 광고의 경우 재생 완료 후 AdListener를 사용하여 적립 여부를 확인할 수 있습니다.
 
