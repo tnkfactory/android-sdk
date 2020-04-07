@@ -25,6 +25,7 @@
    * [리워드 동영상 광고 적립 여부 확인](#리워드-동영상-광고-적립-여부-확인)
 7. [AdListener 사용 방법](#7-adlistener-사용-방법)
 8. [미디에이션 (Mediation)](#8-미디에이션-mediation)
+9. [구 SDK에서 마이그레이션 하기](./MIGRATION.md)
 
 ## 1. SDK 설정하기
 
