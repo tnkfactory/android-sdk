@@ -89,15 +89,6 @@ public class NativeActivity extends AppCompatActivity {
             @Override
             public void onClick(AdItem adItem) {
             }
-
-            /**
-             * 화면 닫힐 때 호출됨 (배너는 다른 광고가 로딩될때 이전 광고에 대하여 호출됨, native 는 detach 시점에 호출됨)
-             * @param adItem 이벤트 대상이되는 AdItem 객체
-             * @param type 0:simple close, 1: auto close, 2:exit
-             */
-            @Override
-            public void onClose(AdItem adItem, int type) {
-            }
         });
 
         nativeAdItem.load();

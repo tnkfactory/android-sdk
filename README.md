@@ -107,9 +107,13 @@ Test Flight 에서는 별도로 계정등록을 하지않아도 간단히 테스
 
 ```xml
 <application
-        ...>
-        
-    <meta-data android:name="tnk_pub_id" android:value="YOUR-INVENTORY-ID-HERE" />
+    ...
+    >
+        ...
+
+        <meta-data android:name="tnk_pub_id" android:value="YOUR-INVENTORY-ID-HERE" />
+
+        ...
 </application>
 ```
 
@@ -128,10 +132,12 @@ import com.tnkfactory.ad.*;
 ```java
 @Override
 public void onCreate(Bundle savedInstanceState) {
-...
+    ...
 
     InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this, "YOUR-PlACEMENT-ID");
-...
+    
+    ...
+}
 ```
 
 ### 전면 광고 띄우기
@@ -143,12 +149,10 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-...
+        ...
 
         InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this,"YOUR-PlACEMENT-ID");
-	interstitialAdItem.setLisenter(new AdListener() {
+        interstitialAdItem.setLisenter(new AdListener() {
             @Override
             public void onLoad(AdItem adItem) {
                 adItem.show();
@@ -156,9 +160,10 @@ public class MainActivity extends Activity {
         });
 
         interstitialAdItem.load();
-	
-...
-
+        
+        ...
+    }
+}
 ```
 
 만약 광고를 로드하고 일정시간 후에 광고를 띄우시려면 아래와 같이 광고가 성공적으로 로딩되었는지 확인한 후 광고를 띄우실 수 있습니다.
@@ -187,7 +192,7 @@ interstitialAdItem.setListener(new AdListener() {
     ...
 
     /**
-     * 화면 닫힐 때 호출됨 (배너는 다른 광고가 로딩될때 이전 광고에 대하여 호출됨, native 는 detach 시점에 호출됨)
+     * 화면 닫힐 때 호출됨
      * @param adItem 이벤트 대상이되는 AdItem 객체
      * @param type 0:simple close, 1: auto close, 2:exit
      */
@@ -479,7 +484,7 @@ public abstract class AdListener {
     public static int VIDEO_VERIFY_FAILED_ERROR = -9; // 그외 시스템 에러가 발생
 
     /**
-     * 화면 닫힐 때 호출됨 (배너는 다른 광고가 로딩될때 이전 광고에 대하여 호출됨, native 는 detach 시점에 호출됨)
+     * 화면 닫힐 때 호출됨
      * @param adItem 이벤트 대상이되는 AdItem 객체
      * @param type 0:simple close, 1: auto close, 2:exit
      */
