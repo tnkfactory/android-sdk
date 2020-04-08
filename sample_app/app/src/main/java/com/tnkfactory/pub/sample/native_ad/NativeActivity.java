@@ -1,12 +1,9 @@
 package com.tnkfactory.pub.sample.native_ad;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -91,8 +88,8 @@ public class NativeActivity extends AppCompatActivity {
             }
         });
 
+        // 네이티브 광고 로드
         nativeAdItem.load();
-
     }
 
     // 네이티브 광고 노출
@@ -105,12 +102,13 @@ public class NativeActivity extends AppCompatActivity {
             adContainer.removeAllViews();
 
             // 네이티브 아이템 레이아웃 삽입
-            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            LinearLayout adItemView = (LinearLayout) inflater.inflate(R.layout.native_ad_item, null);
-            adContainer.addView(adItemView);
+            ViewGroup view = (ViewGroup) View.inflate(this, R.layout.native_ad_item, adContainer);
+
+            // 네이티브 바인더 객채 생성
+            // 생성자에 메인 컨텐츠가 표시될 뷰 ID 필수 입력
+            NativeViewBinder binder = new NativeViewBinder(R.id.native_ad_content);
 
             // 네이티브 바인더 셋팅
-            NativeViewBinder binder = new NativeViewBinder(R.id.native_ad_content);
             binder.iconId(R.id.native_ad_icon)
                     .titleId(R.id.native_ad_title)
                     .textId(R.id.native_ad_desc)
@@ -118,8 +116,8 @@ public class NativeActivity extends AppCompatActivity {
                     .watermarkIconId(R.id.native_ad_watermark_container)
                     .addClickView(R.id.native_ad_content);
 
-            // 광고 노출
-            nativeAdItem.attach(adContainer, binder);
+            // 네이티브 광고 노출
+            nativeAdItem.attach(view, binder);
         }
     }
 }

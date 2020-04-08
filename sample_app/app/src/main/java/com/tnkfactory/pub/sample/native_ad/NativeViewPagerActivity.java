@@ -1,8 +1,6 @@
 package com.tnkfactory.pub.sample.native_ad;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -114,15 +112,17 @@ public class NativeViewPagerActivity extends AppCompatActivity {
         @Override
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
             ViewGroup layout;
-            LayoutInflater inflater = (LayoutInflater) container.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             if (items.get(position) instanceof NativeAdItem) {
                 NativeAdItem nativeAdItem = (NativeAdItem) items.get(position);
-                layout = (ViewGroup) inflater.inflate(R.layout.native_ad_item, container, false);
+                layout = (ViewGroup) View.inflate(container.getContext(), R.layout.native_ad_item, null);
                 container.addView(layout);
 
-                // 네이티브 바인더 셋팅
+                // 네이티브 바인더 객채 생성
+                // 생성자에 메인 컨텐츠가 표시될 뷰 ID 필수 입력
                 NativeViewBinder binder = new NativeViewBinder(R.id.native_ad_content);
+
+                // 네이티브 바인더 셋팅
                 binder.iconId(R.id.native_ad_icon)
                         .titleId(R.id.native_ad_title)
                         .textId(R.id.native_ad_desc)
@@ -130,11 +130,11 @@ public class NativeViewPagerActivity extends AppCompatActivity {
                         .watermarkIconId(R.id.native_ad_watermark_container)
                         .addClickView(R.id.native_ad_content);
 
-                // 광고 노출
+                // 네이티브 광고 노출
                 nativeAdItem.attach(layout, binder);
 
             } else {
-                layout = (ViewGroup) inflater.inflate(R.layout.view_pager_dummy_item, container, false);
+                layout = (ViewGroup) View.inflate(container.getContext(), R.layout.view_pager_dummy_item, null);
 
                 TextView textView = layout.findViewById(R.id.pager_dummy_text);
                 textView.setText((String) items.get(position));
