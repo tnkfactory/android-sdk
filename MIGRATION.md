@@ -4,12 +4,15 @@
 
 ## 목차
 
-1. [공통 변경 사항](#1-공통-변경-사항)
-2. [전면 광고 (Interstitial Ad) 마이그레이션](#2-전면-광고-interstitial-ad-마이그레이션)
+1. [필수 사항](#1-필수-사항)
+   * [프로젝트에서 구 SDK 제거](#프로젝트에서-구-sdk-제거)
+   * [신규 Publisher SDK 설정하기](#신규-publisher-sdk-설정하기)
+2. [공통 변경 사항](#2-공통-변경-사항)
+3. [전면 광고 (Interstitial Ad) 마이그레이션](#3-전면-광고-interstitial-ad-마이그레이션)
    * [구 SDK 사용 방법](#구-sdk-사용-방법)
    * [신규 SDK 사용 방법](#신규-sdk-사용-방법)
    * [차이점](#차이점)
-3. [배너 광고 (Banner Ad) 마이그레이션](#3-배너-광고-banner-ad-마이그레이션)
+4. [배너 광고 (Banner Ad) 마이그레이션](#4-배너-광고-banner-ad-마이그레이션)
    * [XML 뷰 삽입 방식](#xml-뷰-삽입-방식)
      * [구 SDK 사용 방법](#구-sdk-사용-방법-1)
      * [신규 SDK 사용 방법](#신규-sdk-사용-방법-1)
@@ -18,31 +21,61 @@
      * [구 SDK 사용 방법](#구-sdk-사용-방법-2)
      * [신규 SDK 사용 방법](#신규-sdk-사용-방법-2)
      * [차이점](#차이점-2)
-4. [네이티브 광고 (Native Ad) 마이그레이션](#4-네이티브-광고-native-ad-마이그레이션)
+5. [네이티브 광고 (Native Ad) 마이그레이션](#5-네이티브-광고-native-ad-마이그레이션)
    * [구 SDK 사용 방법](#구-sdk-사용-방법-3)
    * [신규 SDK 사용 방법](#신규-sdk-사용-방법-3)
    * [차이점](#차이점-3)
-5. [동영상 광고 (Video Ad)](#5-동영상-광고-video-ad)
+6. [동영상 광고 (Video Ad)](#6-동영상-광고-video-ad)
    * [구 SDK 사용 방법](#구-sdk-사용-방법-4)
    * [신규 SDK 사용 방법](#신규-sdk-사용-방법-4)
    * [차이점](#차이점-4)
 
-## 1. 공통 변경 사항
+## 1. 필수 사항
+
+### 프로젝트에서 구 SDK 제거
+
+신규 Publisher SDK를 사용하기 위해서는 기존에 사용하던 구 SDK의 제거 후 사용이 가능합니다.
+
+삽입한 [tnkad_sdk.aar] 파일을 삭제하고 해당 파일을 프로젝트에 참조하던 설정을 제거해주세요.
+
+### 신규 Publisher SDK 설정하기
+
+아래의 코드를 App Module의 build.gradle 파일에 추가해주세요.
+
+[![Download](https://api.bintray.com/packages/tnkfactory/android-sdk/pub/images/download.svg)](https://bintray.com/tnkfactory/android-sdk/pub/_latestVersion)
+
+```gradle
+dependencies {
+    implementation 'com.tnkfactory.ad:pub:7.1.2'
+}
+```
+
+AndroidManifest.xml 파일에 아래의 권한을 추가해주세요.
+
+```xml
+<uses-permission android:name="android.permission.INTERNET" />
+```
+Proguard 를 사용하시는 경우 Proguard 설정 파일에 아래의 내용을 반드시 넣어주세요.
+
+```proguard
+ -keep class com.tnkfactory.** { *;}
+```
+
+
+## 2. 공통 변경 사항
 
 1) **App ID**의 명칭을 **Inventory ID**로 변경하였습니다.
 
 2) **광고 로직 ID**의 명칭을 **Placement ID**로 변경하였습니다.
 
 * Placement ID는 필수입니다. 
-* 구 SDK에서 광고 로직 ID 설정없이 사용하던 광고의 경우 Placement ID를 생성하고 광고 타입에 맞는 설정 후 이용해주세요.
+* 구 SDK에서 광고 로직 ID 설정없이 TnkSession.PPI 또는 TnkSession.CPC를 넣어 사용하던 광고의 경우 Placement ID를 넣는 란에 " "을 넣어주시면 됩니다.
 
-3) 신규 SDK에서 모든 광고 리스너는 **AdListener**로 통합되어 사용됩니다.
+3) 구SDK에서는 각 광고별 리스너가 구분되어 존재했으나 신규 SDK에서 모든 광고 리스너는 **AdListener** 하나로 통합되어 사용됩니다.
 
-4) 광고 리스너의 onFailure에서 제공되는 **AdError 클래스**를 사용하여 에러의 원인 파악이 쉬워졌습니다.
+4) 광고 리스너의 onFailure에서 제공되는 **AdError 클래스**의 getMessage()를 사용하여 에러의 원인 파악이 쉬워졌습니다.
 
-
-
-## 2. 전면 광고 (Interstitial Ad) 마이그레이션
+## 3. 전면 광고 (Interstitial Ad) 마이그레이션
 
 구 SDK에서 신규 SDK로 전면 광고를 마이그레이션 하기 위해 사용 방법을 비교해보면 아래와 같습니다.
 
@@ -69,14 +102,14 @@ protected void onCreate(Bundle savedInstanceState) {
 
         @Override
         public void onLoad() {
+          // 광고 로드 완료 후 노출
+          TnkSession.showInterstitialAd(this);
         }
 
         @Override
         public void onShow() {
         }
-    });
-
-    TnkSession.showInterstitialAd(this);
+    });    
   
   ...
 }
@@ -89,7 +122,7 @@ protected void onCreate(Bundle savedInstanceState) {
 protected void onCreate(Bundle savedInstanceState) {
   ...
     
-    final InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this, "Placement ID");
+    InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this, "Placement ID");
     interstitialAdItem.setListener(new AdListener() {
         @Override
         public void onClose(AdItem adItem, int type) {
@@ -106,8 +139,8 @@ protected void onCreate(Bundle savedInstanceState) {
 
         @Override
         public void onLoad(AdItem adItem) {
-            // 광고가 로드 완료된 후 show를 호출해주어야 합니다.
-            interstitialAdItem.show();
+            // 광로 로드 완료 후 노출
+            adItem.show();
         }
 
         @Override
@@ -127,15 +160,13 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ### 차이점
 
-1) **InterstitialAdItem** 클래스가 추가되어 광고를 로드하고 노출할 수 있게 변경되었습니다.
+1) 전면 광고를 사용방법은 구 SDK에서는 TnkSession을 통해 가능했으나 신규 SDK에서는  **InterstitialAdItem** 클래스가 추가되어 전면 광고를 사용할 수 있도록 변경되었습니다.
 
-2) 광고 리스너에 광고 클릭을 감지할 수 있는 **onClick** 추가되었습니다.
-
-3) **show** 호출 시점을 광고 로드 완료 후로 바꾸었습니다.
+2) 전면 광고 클릭 감지의 경우 구 SDK에서는 TnkAdListener의 onClose 매개변수 type을 통해 감지할 수 있었으나 신규 SDK는 **onClick**을 분리하는 것으로 변경되었습니다.
 
 
 
-## 3. 배너 광고 (Banner Ad) 마이그레이션
+## 4. 배너 광고 (Banner Ad) 마이그레이션
 
 배너 광고를 사용하는 방법은 XML 뷰 삽입 방식과 뷰 동적 생성 방식 두 가지가 있습니다.
 
@@ -166,21 +197,7 @@ protected void onCreate(Bundle savedInstanceState) {
 	...
     
     bannerAdView = findViewById(R.id.banner_ad_view);
-    bannerAdView.setBannerAdListener(new BannerAdListener() {
-        @Override
-        public void onFailure(int errCode) {
-            Log.e("Test", "errCode : " + errCode);
-        }
-
-        @Override
-        public void onShow() {
-        }
-
-        @Override
-        public void onClick() {
-        }
-    });
-
+  
     bannerAdView.loadAd("Logic ID");
   
   ...
@@ -234,25 +251,7 @@ protected void onCreate(Bundle savedInstanceState) {
   ...
     
     BannerAdView bannerAdView = findViewById(R.id.banner_ad_view);
-    bannerAdView.setListener(new AdListener() {
-        @Override
-        public void onError(AdItem adItem, AdError error) {
-            Log.e("Test", "errCode : " + error.getMessage());
-        }
-
-        @Override
-        public void onLoad(AdItem adItem) {
-        }
-
-        @Override
-        public void onShow(AdItem adItem) {
-        }
-
-        @Override
-        public void onClick(AdItem adItem) {
-        }
-    });
-
+  
     bannerAdView.load();
   
   ...
@@ -261,11 +260,9 @@ protected void onCreate(Bundle savedInstanceState) {
 
 #### 차이점
 
-1) XML에 BannerAdView 옵션으로 **placement_id**가 추가되어 광고 로드 시점이 아닌 뷰 삽입 시점에 입력하도록 변경되었습니다.
+1) XML에 BannerAdView 옵션으로 **placement_id**가 추가되어 광고 로드 시점이 아닌 뷰 삽입 시점에 Placement ID를 입력하도록 변경되었습니다.
 
-2) 광고 리스너에 광고 로드 완료를 감지할 수 있는 **onLoad** 추가되었습니다.
-
-3) 생명주기 관리 함수가 삭제되고 **자동처리** 해주도록 변경되었습니다.
+2) 생명주기 관리 함수가 삭제되고 **자동처리** 해주도록 변경되어 구 SDK에서 사용중이던 onPause, onResume, onDestroy 로직들은 삭제하시면 됩니다.
 
 ### 뷰 동적 생성 방식
 
@@ -279,21 +276,6 @@ protected void onCreate(Bundle savedInstanceState) {
     RelativeLayout mainLayout = findViewById(R.id.main_layout);
     BannerAdView bannerAdView = new BannerAdView(this);
     mainLayout.addView(bannerAdView);
-
-    bannerAdView.setBannerAdListener(new BannerAdListener() {
-        @Override
-        public void onFailure(int errCode) {
-            Log.e("Test", "errCode : " + errCode);
-        }
-
-        @Override
-        public void onShow() {
-        }
-
-        @Override
-        public void onClick() {
-        }
-    });
 
     bannerAdView.loadAd("Logic ID");
 
@@ -342,25 +324,6 @@ protected void onCreate(Bundle savedInstanceState) {
     BannerAdView bannerAdView = new BannerAdView(this, "Placement ID");
     mainLayout.addView(bannerAdView);
 
-    bannerAdView.setListener(new AdListener() {
-        @Override
-        public void onError(AdItem adItem, AdError error) {
-            Log.e("Test", "errCode : " + error.getMessage());
-        }
-
-        @Override
-        public void onLoad(AdItem adItem) {
-        }
-
-        @Override
-        public void onShow(AdItem adItem) {
-        }
-
-        @Override
-        public void onClick(AdItem adItem) {
-        }
-    });
-
     // 배너 광고 로드
     bannerAdView.load();
   
@@ -372,11 +335,9 @@ protected void onCreate(Bundle savedInstanceState) {
 
 1) Placement ID를 광고 로드 시점이 아닌 **BannerAdView 생성 시점**에 입력하도록 변경되었습니다.
 
-2) 광고 리스너에 광고 로드 완료를 감지할 수 있는 **onLoad** 추가되었습니다.
+2) 생명주기 관리 함수가 삭제되고 **자동처리** 해주도록 변경되어 구 SDK에서 사용중이던 onPause, onResume, onDestroy 로직들은 삭제하시면 됩니다.
 
-3) 생명주기 관리 함수가 삭제되고 **자동처리** 해주도록 변경되었습니다.
-
-## 4. 네이티브 광고 (Native Ad) 마이그레이션
+## 5. 네이티브 광고 (Native Ad) 마이그레이션
 
 ### 구 SDK 사용 방법
 
@@ -456,6 +417,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
         @Override
         public void onLoad(AdItem adItem) {
+          	// 네이티브 광고 노출
             showNativeAd((NativeAdItem) adItem);
         }
 
@@ -508,9 +470,9 @@ private void showNativeAd(NativeAdItem nativeAdItem) {
 
 1) Placement ID를 광고 로드 시점이 아닌 **NativeAdItem 생성 시점**에 입력하도록 변경되었습니다.
 
-2) 광고 정보를 뷰에 맵핑을 하기 위해서 **네이티브 바인더** 기능이 추가 되었으며 각 뷰의 ID를 넣어주면 SDK에서 광고 데이터를 넣어줍니다.
+2) 광고 정보를 뷰에 맵핑을 하기 위해서 **네이티브 바인더** 기능이 추가 되었으며 필요한 각 뷰의 ID를 넣어주면 SDK에서 광고 데이터를 삽입하여 노출합니다. 이때 광고의 메인 컨텐츠(이미지) 뷰의 ID 는 네이티브 바인더 생성시 필수로 입력해주어야 합니다.
 
-## 5. 동영상 광고 (Video Ad)
+## 6. 동영상 광고 (Video Ad)
 
 ### 구 SDK 사용 방법
 
@@ -575,7 +537,7 @@ protected void onCreate(Bundle savedInstanceState) {
         @Override
         public void onLoad(AdItem adItem) {
             // 광고가 로드 완료된 후 show를 호출해주어야 합니다.
-            interstitialAdItem.show();
+            adItem.show();
         }
 
         @Override
@@ -606,4 +568,6 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ### 차이점
 
-신규 SDK 동영상 광고는 전면 광고 사용방법과 동일하며 Placement ID 생성 후 광고 설정을 동영상으로 설정해주시면 동영상 광고 사용이 가능합니다.
+1) 동영상 광고의 사용방법은 구 SDK에서는 TnkSession을 통해 가능했으나 신규 SDK에서는  **InterstitialAdItem** 클래스가 추가되어 전면 광고를 사용할 수 있도록 변경되었습니다.
+
+2) 신규 SDK 동영상 광고는 전면 광고 사용방법과 동일하며 Placement ID 생성 후 광고 설정을 동영상으로 설정해주시면 동영상 광고가 노출됩니다.
