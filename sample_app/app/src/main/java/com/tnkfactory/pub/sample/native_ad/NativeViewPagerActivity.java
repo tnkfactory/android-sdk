@@ -118,7 +118,7 @@ public class NativeViewPagerActivity extends AppCompatActivity {
                 layout = (ViewGroup) View.inflate(container.getContext(), R.layout.native_ad_item, null);
                 container.addView(layout);
 
-                // 네이티브 바인더 객채 생성
+                // 네이티브 바인더 객체 생성
                 // 생성자에 메인 컨텐츠가 표시될 뷰 ID 필수 입력
                 NativeViewBinder binder = new NativeViewBinder(R.id.native_ad_content);
 
