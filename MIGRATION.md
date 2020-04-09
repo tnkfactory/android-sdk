@@ -160,9 +160,9 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ### 차이점
 
-1) 전면 광고를 사용방법은 구 SDK에서는 TnkSession을 통해 가능했으나 신규 SDK에서는  **InterstitialAdItem** 클래스가 추가되어 전면 광고를 사용할 수 있도록 변경되었습니다.
+1) 전면 광고를 사용방법은 구 SDK에서는 TnkSession 클래스를 통해 가능했으나 신규 SDK에서는 **InterstitialAdItem** 클래스가 추가되어 전면 광고를 사용할 수 있도록 변경되었습니다.
 
-2) 전면 광고 클릭 감지의 경우 구 SDK에서는 TnkAdListener의 onClose 매개변수 type을 통해 감지할 수 있었으나 신규 SDK는 **onClick**을 분리하는 것으로 변경되었습니다.
+2) 전면 광고 클릭 감지의 경우 구 SDK에서는 TnkAdListener의 onClose() 매개변수 type을 통해 감지할 수 있었으나 신규 SDK는 **onClick**을 분리하는 것으로 변경되었습니다.
 
 
 
@@ -173,8 +173,6 @@ protected void onCreate(Bundle savedInstanceState) {
 구 SDK에서 신규 SDK로 전면 광고를 마이그레이션 하기 위해 사용 방법을 비교해보면 아래와 같습니다.
 
 ### XML 뷰 삽입 방식
-
-첫 번째로 XML 방식을 비교해 봅시다.
 
 #### 구 SDK 사용 방법
 
@@ -568,6 +566,6 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ### 차이점
 
-1) 동영상 광고의 사용방법은 구 SDK에서는 TnkSession을 통해 가능했으나 신규 SDK에서는  **InterstitialAdItem** 클래스가 추가되어 전면 광고를 사용할 수 있도록 변경되었습니다.
+1) 동영상 광고의 사용방법은 구 SDK에서는 TnkSession 클래스를 통해 가능했으나 신규 SDK에서는 **InterstitialAdItem** 클래스가 추가되어 동영상 광고를 사용할 수 있도록 변경되었습니다.
 
-2) 신규 SDK 동영상 광고는 전면 광고 사용방법과 동일하며 Placement ID 생성 후 광고 설정을 동영상으로 설정해주시면 동영상 광고가 노출됩니다.
+2) 신규 SDK의 동영상 광고는 전면 광고 사용방법과 동일하며 Placement ID 생성 후 광고 설정을 동영상으로 설정해주시면 동영상 광고가 노출됩니다.
