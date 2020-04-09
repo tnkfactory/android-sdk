@@ -550,6 +550,7 @@ protected void onCreate(Bundle savedInstanceState) {
         public void onVideoCompletion(AdItem adItem, int verifyCode) {
             super.onVideoCompletion(adItem, verifyCode);
 
+          	// 적립 성공 여부 확인
             if (verifyCode >= VIDEO_VERIFY_SUCCESS_SELF) {
                 // 적립 성공
             } else {
@@ -569,3 +570,6 @@ protected void onCreate(Bundle savedInstanceState) {
 1) 동영상 광고의 사용방법은 구 SDK에서는 TnkSession 클래스를 통해 가능했으나 신규 SDK에서는 **InterstitialAdItem** 클래스가 추가되어 동영상 광고를 사용할 수 있도록 변경되었습니다.
 
 2) 신규 SDK의 동영상 광고는 전면 광고 사용방법과 동일하며 Placement ID 생성 후 광고 설정을 동영상으로 설정해주시면 동영상 광고가 노출됩니다.
+
+3) 구 SDK에서는 VideoAdListener를 통해 비디오 광고의 재생완료 여부만 확인할 수 있었으나 신규 SDK에서는 AdListener의 onVideoCompletion() 매개변수 verifyCode를 통해서 동영상 시청을 통한 리워드가 지급 되었는지 여부를 확인하는 기능이 추가되었습니다.
+
