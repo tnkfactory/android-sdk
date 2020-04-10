@@ -7,6 +7,7 @@
 1. [필수 사항](#1-필수-사항)
    * [프로젝트에서 구 SDK 제거](#프로젝트에서-구-sdk-제거)
    * [신규 Publisher SDK 설정하기](#신규-publisher-sdk-설정하기)
+   * [Tnk Publisher SDK 가이드](#tnk-publisher-sdk-가이드)
 2. [공통 변경 사항](#2-공통-변경-사항)
 3. [전면 광고 (Interstitial Ad) 마이그레이션](#3-전면-광고-interstitial-ad-마이그레이션)
    * [구 SDK 사용 방법](#구-sdk-사용-방법)
@@ -61,6 +62,9 @@ Proguard 를 사용하시는 경우 Proguard 설정 파일에 아래의 내용�
  -keep class com.tnkfactory.** { *;}
 ```
 
+### Tnk Publisher SDK 가이드
+
+더 상세한 Tnk Publisher SDK 사용방법은 [Tnk Publisher SDK (for Android)](./README.md)를 참조하시면 됩니다. 
 
 ## 2. 공통 변경 사항
 
@@ -68,12 +72,12 @@ Proguard 를 사용하시는 경우 Proguard 설정 파일에 아래의 내용�
 
 2) **광고 로직 ID**의 명칭을 **Placement ID**로 변경하였습니다.
 
-* Placement ID는 필수입니다. 
+* 광고를 노출하기 위해서는 광고별 Placement ID 생성 및 광고 설정은 필수입니다.
 * 구 SDK에서 광고 로직 ID 설정없이 TnkSession.PPI 또는 TnkSession.CPC를 넣어 사용하던 광고의 경우 Placement ID를 넣는 란에 " "을 넣어주시면 됩니다.
 
-3) 구SDK에서는 각 광고별 리스너가 구분되어 존재했으나 신규 SDK에서 모든 광고 리스너는 **AdListener** 하나로 통합되어 사용됩니다.
+3) 구 SDK에서는 각 광고 타입별 리스너가 구분되어 존재했으나 신규 SDK에서 모든 광고 리스너는 **AdListener** 하나로 통합되어 사용됩니다.
 
-4) 광고 리스너의 onFailure에서 제공되는 **AdError 클래스**의 getMessage()를 사용하여 에러의 원인 파악이 쉬워졌습니다.
+4) AdListener의 onFailure에서 제공되는 **AdError 클래스**의 getMessage()를 사용하여 에러의 원인 파악이 쉬워졌습니다.
 
 ## 3. 전면 광고 (Interstitial Ad) 마이그레이션
 
@@ -468,7 +472,7 @@ private void showNativeAd(NativeAdItem nativeAdItem) {
 
 1) Placement ID를 광고 로드 시점이 아닌 **NativeAdItem 생성 시점**에 입력하도록 변경되었습니다.
 
-2) 광고 정보를 뷰에 맵핑을 하기 위해서 **네이티브 바인더** 기능이 추가 되었으며 필요한 각 뷰의 ID를 넣어주면 SDK에서 광고 데이터를 삽입하여 노출합니다. 이때 광고의 메인 컨텐츠(이미지) 뷰의 ID 는 네이티브 바인더 생성시 필수로 입력해주어야 합니다.
+2) 광고 정보를 뷰에 맵핑을 하기 위해서 **네이티브 바인더** 기능이 추가 되었으며 바인더에 필요한 각 뷰의 ID를 넣어주면 SDK에서 광고 데이터를 삽입하여 노출합니다. 이때 광고의 메인 컨텐츠(이미지) 뷰의 ID 는 네이티브 바인더 생성시 필수로 입력해주어야 합니다.
 
 ## 6. 동영상 광고 (Video Ad)
 
