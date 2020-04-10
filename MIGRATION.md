@@ -33,6 +33,11 @@
 
 ## 1. 필수 사항
 
+### 사이트 Migration
+
+신규 Publisher SDK를 위하여 새로운 Publisher Site가 오픈되었습니다. 그러므로 우선 Publisher Site에 계정 생성 및 인벤토리 생성 작업이 필요합니다.
+다만 개발자의 편의를 위하여 저희 Tnk의 영업담당자를 통하여 Migration 을 요청하시면 기존 App 및 로직 ID 설정을 새로운 사이트에 맞추어 이관해드리고 있습니다. 그러므로 우선 Site 이관 요청을 해주시고 아래의 SDK Migration 작업을 수행해주시기 바랍니다.
+
 ### 프로젝트에서 구 SDK 제거
 
 신규 Publisher SDK를 사용하기 위해서는 기존에 사용하던 구 SDK의 제거 후 사용이 가능합니다.
@@ -72,8 +77,8 @@ Proguard 를 사용하시는 경우 Proguard 설정 파일에 아래의 내용�
 
 2) **광고 로직 ID**의 명칭을 **Placement ID**로 변경하였습니다.
 
-* 광고를 노출하기 위해서는 광고별 Placement ID 생성 및 광고 설정은 필수입니다.
-* 구 SDK에서 광고 로직 ID 설정없이 TnkSession.PPI 또는 TnkSession.CPC를 넣어 사용하던 광고의 경우 Placement ID를 넣는 란에 " "을 넣어주시면 됩니다.
+* 광고를 노출하기 위해서는 광고별 Placement ID 생성 및 광고 설정은 필수입니다. (Site 이관을 요청하셨다면 기존에 사용하는 App ID, 광고로직 ID를 그대로 이용하실 수 있습니다.)
+* 구 SDK에서 광고 로직 ID 설정없이 TnkSession.CPC를 넣어 사용하던 광고의 경우 Placement ID를 넣는 란에 " "을 넣어주시면 됩니다.
 
 3) 구 SDK에서는 각 광고 타입별 리스너가 구분되어 존재했으나 신규 SDK에서 모든 광고 리스너는 **AdListener** 하나로 통합되어 사용됩니다.
 
