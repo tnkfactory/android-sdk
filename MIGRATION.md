@@ -45,6 +45,22 @@
 
 삽입한 [tnkad_sdk.aar] 파일을 삭제하고 해당 파일을 프로젝트에 참조하던 설정을 제거해주세요.
 
+##### 삭제 예시
+
+구 SDK 가이드의 라이브러리 등록 방식(File > New Module)으로 SDK 참조 했을 경우 예시입니다.
+
+###### gradle에서 아래 부분 삭제
+
+```
+dependencies {
+    implementation project(":tnkad_sdk") // 이 부분 삭제
+}
+```
+
+###### SDK 파일 삭제
+
+![migration_guide_01](./img/migration_guide_01.png)
+
 ### 신규 Publisher SDK 설정하기
 
 아래의 코드를 App Module의 build.gradle 파일에 추가해주세요.
