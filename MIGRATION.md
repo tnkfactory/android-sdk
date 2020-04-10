@@ -5,6 +5,7 @@
 ## 목차
 
 1. [필수 사항](#1-필수-사항)
+   * [사이트 Migration](#사이트-migration)
    * [프로젝트에서 구 SDK 제거](#프로젝트에서-구-sdk-제거)
    * [신규 Publisher SDK 설정하기](#신규-publisher-sdk-설정하기)
    * [Tnk Publisher SDK 가이드](#tnk-publisher-sdk-가이드)
