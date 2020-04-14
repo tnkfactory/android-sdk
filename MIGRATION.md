@@ -188,7 +188,9 @@ protected void onCreate(Bundle savedInstanceState) {
 
 1) 전면 광고를 사용방법은 구 SDK에서는 TnkSession 클래스를 통해 가능했으나 신규 SDK에서는 **InterstitialAdItem** 클래스가 추가되어 전면 광고를 사용할 수 있도록 변경되었습니다.
 
-2) 전면 광고 클릭 감지의 경우 구 SDK에서는 TnkAdListener의 onClose() 매개변수 type을 통해 감지할 수 있었으나 신규 SDK는 **onClick**을 분리하는 것으로 변경되었습니다.
+2) 광고 리스너는 AdListener 클래스를 사용합니다. 또한 AdListener 의 메소드들은 필요한 메소드만 구현하시고 사용하지 않는 메소드는 삭제하시면 됩니다.
+
+3) 전면 광고 클릭 감지의 경우 구 SDK에서는 TnkAdListener의 onClose() 매개변수 type을 통해 감지할 수 있었으나 신규 SDK는 **onClick**을 분리하는 것으로 변경되었습니다.
 
 
 
