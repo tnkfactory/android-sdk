@@ -121,6 +121,8 @@ public class FeedRecyclerViewActivity extends AppCompatActivity {
                     @Override
                     public void onError(AdItem adItem, AdError error) {
                         Toast.makeText(FeedRecyclerViewActivity.this, "Feed Ad Error : " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        items.remove(15);
+                        notifyDataSetChanged();
                     }
 
                     /**
