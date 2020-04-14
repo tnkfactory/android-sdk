@@ -97,10 +97,10 @@ Proguard 를 사용하시는 경우 Proguard 설정 파일에 아래의 내용�
 * 광고를 노출하기 위해서는 광고별 Placement ID 생성 및 광고 설정은 필수입니다. (Site 이관을 요청하셨다면 기존에 사용하는 App ID, 광고로직 ID를 그대로 이용하실 수 있습니다.)
 * 구 SDK에서 광고 로직 ID 설정없이 TnkSession.CPC를 넣어 사용하던 광고의 경우 Placement ID를 넣는 란에 아래를 참고하시어 해당 명칭을 넣어주시면 됩니다.
 
- * 전면광고 : DEFAULT_INTERSTITIAL
- * 배너광고 : DEFAULT_BANNER
- * 네이티브광고 : DEFAULT_NATIVE
- * 동영상광고 : DEFAULT_VIDEO
+  + 전면광고 : DEFAULT_INTERSTITIAL
+  + 배너광고 : DEFAULT_BANNER
+  + 네이티브광고 : DEFAULT_NATIVE
+  + 동영상광고 : DEFAULT_VIDEO
 
 3) 구 SDK에서는 각 광고 타입별 리스너가 구분되어 존재했으나 신규 SDK에서 모든 광고 리스너는 **AdListener** 하나로 통합되어 사용됩니다.
 
