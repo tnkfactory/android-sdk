@@ -31,7 +31,6 @@ public class FeedRecyclerViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_recyclerview);
 
-        // RecyclerView 셋팅
         RecyclerView recyclerView = findViewById(R.id.list_feed);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new FeedRecyclerViewAdapter(getListItem()));

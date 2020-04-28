@@ -19,17 +19,8 @@ public class BannerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_banner);
 
-        xmlBannerLoad();
         javaBannerLoad();
-    }
-
-    // 배너 광고 - XML 뷰 삽입 방식
-    private void xmlBannerLoad() {
-        BannerAdView bannerAdView = findViewById(R.id.banner_ad_view);
-        bannerAdView.setListener(adListener);
-
-        // 배너 광고 로드
-        bannerAdView.load();
+        xmlBannerLoad();
     }
 
     // 배너 광고 - 뷰 동적 생성 방식
@@ -38,6 +29,15 @@ public class BannerActivity extends AppCompatActivity {
         BannerAdView bannerAdView = new BannerAdView(this, "TEST_BANNER_100");
         bannerAdLayout.addView(bannerAdView);
 
+        bannerAdView.setListener(adListener);
+
+        // 배너 광고 로드
+        bannerAdView.load();
+    }
+
+    // 배너 광고 - XML 뷰 삽입 방식
+    private void xmlBannerLoad() {
+        BannerAdView bannerAdView = findViewById(R.id.banner_ad_view);
         bannerAdView.setListener(adListener);
 
         // 배너 광고 로드
