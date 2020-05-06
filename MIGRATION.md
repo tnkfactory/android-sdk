@@ -115,7 +115,7 @@ Proguard 를 사용하시는 경우 Proguard 설정 파일에 아래의 내용�
 ```java
 @Override
 protected void onCreate(Bundle savedInstanceState) {
-	...
+  ...
     
     TnkSession.prepareInterstitialAd(this, "Logic ID", new TnkAdListener() {
         @Override
@@ -225,7 +225,7 @@ private BannerAdView bannerAdView;
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
-	...
+  ...
     
     bannerAdView = findViewById(R.id.banner_ad_view);
   
@@ -302,7 +302,7 @@ protected void onCreate(Bundle savedInstanceState) {
 ```java
 @Override
 protected void onCreate(Bundle savedInstanceState) {
-	...
+  ...
     
     RelativeLayout mainLayout = findViewById(R.id.main_layout);
     BannerAdView bannerAdView = new BannerAdView(this);
@@ -349,7 +349,7 @@ protected void onDestroy() {
 ```java
 @Override
 protected void onCreate(Bundle savedInstanceState) {
-	...
+  ...
     
     RelativeLayout mainLayout = findViewById(R.id.main_layout);
     BannerAdView bannerAdView = new BannerAdView(this, "Placement ID");
@@ -437,7 +437,7 @@ private void showNativeAd(NativeAdItem adItem) {
 ```java
 @Override
 protected void onCreate(Bundle savedInstanceState) {
-	...
+  ...
     
     NativeAdItem nativeAdItem = new NativeAdItem(this, "Placement ID");
     nativeAdItem.setListener(new AdListener() {
@@ -510,7 +510,7 @@ private void showNativeAd(NativeAdItem nativeAdItem) {
 ```java
 @Override
 protected void onCreate(Bundle savedInstanceState) {
-	...
+  ...
     
     TnkSession.prepareVideoAd(this, "Logic ID", new VideoAdListener() {
 
