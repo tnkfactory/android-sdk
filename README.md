@@ -244,7 +244,7 @@ interstitialAdItem.setListener(new AdListener() {
 <RelativeLayout
    ...
    >
-			...
+      ...
   
         <com.tnkfactory.ad.BannerAdView
             android:id="@+id/banner_ad_view"
@@ -252,7 +252,7 @@ interstitialAdItem.setListener(new AdListener() {
             android:layout_height="wrap_content"
             app:placement_id="YOUR-PLACEMENT-ID" />
   
-  		...
+      ...
 </RelativeLayout>
 ```
 
@@ -292,14 +292,14 @@ public class MainActivity extends AppCompatActivity {
 <RelativeLayout
    ...
    >
-			...
+      ...
   
         <RelativeLayout
             android:id="@+id/banner_ad_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
   
-  		...
+      ...
 </RelativeLayout>
 ```
 
@@ -317,7 +317,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-			...
+      ...
         
         RelativeLayout bannerAdLayout = findViewById(R.id.banner_ad_layout);
       
@@ -351,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
 <RelativeLayout
    ...
    >
-			...
+      ...
   
         <com.tnkfactory.ad.FeedAdView
             android:id="@+id/feed_ad_view"
@@ -359,7 +359,7 @@ public class MainActivity extends AppCompatActivity {
             android:layout_height="wrap_content"
             app:placement_id="YOUR-PLACEMENT-ID"/>
   
-  		...
+      ...
 </RelativeLayout>
 ```
 
@@ -396,14 +396,14 @@ public class MainActivity extends AppCompatActivity {
 <RelativeLayout
    ...
    >
-			...
+      ...
   
         <RelativeLayout
             android:id="@+id/feed_ad_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
   
-  		...
+      ...
 </RelativeLayout>
 ```
 
@@ -421,7 +421,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-			...
+      ...
         
         RelativeLayout feedAdLayout = findViewById(R.id.feed_ad_layout);
 
@@ -539,11 +539,11 @@ public void onCreate(Bundle savedInstanceState) {
 
 ```java
 public class MainActivity extends AppCompatActivity {
-	...
+  ...
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-			...
+      ...
 
         NativeAdItem nativeAdItem = new NativeAdItem(this, "YOUR-PlACEMENT-ID");
 

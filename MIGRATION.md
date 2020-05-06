@@ -268,7 +268,7 @@ protected void onDestroy() {
 
 ```xml
 <com.tnkfactory.ad.BannerAdView
-		android:id="@+id/banner_ad_view"
+    android:id="@+id/banner_ad_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:placement_id="Placement_ID" />
