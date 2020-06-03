@@ -5,6 +5,7 @@
 1. [SDK 설정하기](#1-sdk-설정하기)
    * [Test Flight](#test-flight)
    * [Publisher ID 등록하기](#publisher-id-등록하기)
+   * [COPPA 설정](#coppa-설정)
 2. [전면 광고 (Interstitial Ad)](#2-전면-광고-interstitial-ad)
    * [전면 광고 객체 생성](#전면-광고-객체-생성)
    * [전면 광고 띄우기](#전면-광고-띄우기)
