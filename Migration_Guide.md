@@ -59,7 +59,7 @@ dependencies {
 
 ###### SDK 파일 삭제
 
-![migration_guide_01](/Users/shin/Git - My/JH_UTIL_SDK/img/migration_guide_01.png)
+![migration_guide_01](./img/migration_guide_01.png)
 
 ### 신규 Publisher SDK 설정하기
 
