@@ -388,7 +388,7 @@ public class TnkUITest : MonoBehaviour {
 
 아래의 PLACEMENT ID를 사용하시면 별도로 계정이나 앱을 등록하지 않아도 간단하게 테스트 광고를 띄워보실 수 있습니다.
 
-단, [[Tnk Pub ID 설정]](#tnk-pub-id-설정)을 하지 않고 하셔야 광고가 나옵니다. Tnk Pub ID 설정을 진행하셨다면 아래 ID로 테스트 광고를 띄우기 위해서 해당 설정을 주석 처리 또는 제거 후 진행해주세요..
+단, [[Tnk Pub ID 설정]](#tnk-pub-id-설정)을 하지 않고 하셔야 광고가 나옵니다. Tnk Pub ID 설정을 진행하셨다면 아래 ID로 테스트 광고를 띄우기 위해서 해당 설정을 주석 처리 또는 제거 후 진행해주세요.
 
 - TEST_BANNER_100 : 배너 광고 (640x100)
 - TEST_BANNER_200 : 배너 광고 (640x200)
