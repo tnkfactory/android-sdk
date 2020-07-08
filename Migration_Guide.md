@@ -69,7 +69,7 @@ dependencies {
 
 ```gradle
 dependencies {
-    implementation 'com.tnkfactory.ad:pub:7.06.2'
+    implementation 'com.tnkfactory.ad:pub:7.07.2'
 }
 ```
 
@@ -147,7 +147,7 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-### 신규 SDK 사용 방법
+### 신규 SDK 사용 방법 (InterstitialAdItem 사용)
 
 ```java
 @Override
@@ -156,13 +156,6 @@ protected void onCreate(Bundle savedInstanceState) {
     
     InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this, "Placement ID");
     interstitialAdItem.setListener(new AdListener() {
-        @Override
-        public void onClose(AdItem adItem, int type) {
-            // 종료 버튼 선택 시 앱을 종료합니다.
-            if (type == AdListener.CLOSE_EXIT) {
-                finish();
-            }
-        }
 
         @Override
         public void onError(AdItem adItem, AdError error) {
@@ -174,14 +167,6 @@ protected void onCreate(Bundle savedInstanceState) {
             // 광로 로드 완료 후 노출
             adItem.show();
         }
-
-        @Override
-        public void onShow(AdItem adItem) {
-        }
-
-        @Override
-        public void onClick(AdItem adItem) {
-        }
     });
 
     interstitialAdItem.load();
@@ -190,9 +175,48 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
+### 신규 SDK 사용 방법 (AdManager 사용)
+
+#### 전면 광고 로드
+
+```java
+// AdListener 미사용시
+AdManager.getInstance().loadInterstitialAd(this, "YOUR-PlACEMENT-ID");
+
+// AdListener 사용시
+AdManager.getInstance().loadInterstitialAd(this, "YOUR-PlACEMENT-ID", new AdListener() {
+
+    @Override
+    public void onLoad(AdItem adItem) {
+      ...
+    }
+});
+```
+
+#### 전면 광고 노출
+
+InterstitialAdItem에서는 load() 후 광고 로딩이 완료된 상태에서 show()를 호출해야 광고가 노출되지만 AdManager에서는 loadInterstitialAd()를 호출함과 동시에 showInterstitialAd()를 호출이 가능합니다. 로드와 노출을 동시에 호출하게 되면 광고 로딩이 완료되는 시점에 노출이 자동으로 호출되어 광고가 보여지게 됩니다.
+
+```java
+// AdListener 미사용시
+AdManager.getInstance().showInterstitialAd(this, "YOUR-PlACEMENT-ID");
+
+// AdListener 사용시
+// loadInterstitialAd() 시 등록했던 AdListener를 교체할 때 사용
+AdManager.getInstance().showInterstitialAd(this, "YOUR-PlACEMENT-ID",new AdListener() {
+
+    @Override
+    public void onShow(AdItem adItem) {
+      ...
+    }
+});
+```
+
+
+
 ### 차이점
 
-1) 전면 광고를 사용방법은 구 SDK에서는 TnkSession 클래스를 통해 가능했으나 신규 SDK에서는 **InterstitialAdItem** 클래스가 추가되어 전면 광고를 사용할 수 있도록 변경되었습니다.
+1) 전면 광고를 사용방법은 구 SDK에서는 TnkSession 클래스를 통해서만 가능했으나 신규 SDK에서는 **InterstitialAdItem** 클래스로 전면 광고를 사용하는 방법과 AdManager를 이용한 방법 총 2가지가 존재합니다. 기존에 TnkSession에서 전면 광고를 사용하던 방법과 유사한 방법은 AdManager를 사용한 방법 입니다.
 
 2) 광고 리스너는 AdListener 클래스를 사용합니다. 또한 AdListener 의 메소드들은 필요한 메소드만 구현하시고 사용하지 않는 메소드는 삭제하시면 됩니다.
 
@@ -452,14 +476,6 @@ protected void onCreate(Bundle savedInstanceState) {
           	// 네이티브 광고 노출
             showNativeAd((NativeAdItem) adItem);
         }
-
-        @Override
-        public void onShow(AdItem adItem) {
-        }
-
-        @Override
-        public void onClick(AdItem adItem) {
-        }
     });
 
     // 네이티브 광고 로드
@@ -553,13 +569,6 @@ protected void onCreate(Bundle savedInstanceState) {
     
     final InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this, "Placement ID");
     interstitialAdItem.setListener(new AdListener() {
-        @Override
-        public void onClose(AdItem adItem, int type) {
-            // 종료 버튼 선택 시 앱을 종료합니다.
-            if (type == AdListener.CLOSE_EXIT) {
-                finish();
-            }
-        }
 
         @Override
         public void onError(AdItem adItem, AdError error) {
@@ -570,14 +579,6 @@ protected void onCreate(Bundle savedInstanceState) {
         public void onLoad(AdItem adItem) {
             // 광고가 로드 완료된 후 show를 호출해주어야 합니다.
             adItem.show();
-        }
-
-        @Override
-        public void onShow(AdItem adItem) {
-        }
-
-        @Override
-        public void onClick(AdItem adItem) {
         }
       
       	@Override

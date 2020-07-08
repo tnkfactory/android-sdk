@@ -20,6 +20,10 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 
 ### Update Notice
 
+* 2020.07.08
+  * Android SDK v7.07.2 업데이트
+    * AdManager 기능 추가
+    * AdItem show(Context context) API 추가
 * 2020.06.17
   * Android SDK v7.06.2 업데이트
     * 내부 기능 개선
@@ -37,6 +41,8 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 
 ### Update Notice
 
+* 2020.07.08
+  * Android SDK v7.07.2 적용
 * 2020.06.17
   * Android SDK v7.06.2 적용
 * 2020.06.12
