@@ -251,7 +251,7 @@ interstitialAdItem.setListener(new AdListener() {
 
 ### 전면 광고 관리를 위한 클래스 AdManager
 
-Publisher SDK에서 전면 광고를 사용하기 위해서는 InterstitialAdItem 생성하여 광고 로드한 뒤 로딩이 완료되면 광고 노출을 실행하여야 합니다. 이때 광고 노출전까지 InterstitialAdItem 객체를 유지해주어야 하는데 액티비티 전환이 일어날 경우 객체를 전달하기 어려운 경우가 발생합니다.
+Publisher SDK에서 전면 광고를 사용하기 위해서는 InterstitialAdItem 생성하여 광고 로드한 뒤 로딩이 완료되면 광고 노출을 실행해야 합니다. 이때 광고 노출전까지 InterstitialAdItem 객체를 유지해주어야 하는데 액티비티 전환이 일어날 경우 객체를 전달하기 어려운 경우가 발생합니다.
 
 위와 같은 상황에 쉽게 InterstitialAdItem 객체를 유지하고 원하는 액티비티에서 광고 노출을 할 수 있도록 하기 위해 AdManager 클래스가 구현이 되어 있습니다. AdManager는 싱글톤 패턴으로 구현되어 있어 액티비티 1에서 광고를 로드한 뒤 액티비티 2에서 광고를 노출하는 것이 가능합니다.
 
