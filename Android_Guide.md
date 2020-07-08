@@ -12,6 +12,10 @@
      * [광고 로드 후 바로 노출](#광고-로드-후-바로-노출)
      * [광고 로드 후 일정시간 후에 노출](#광고-로드-후-일정시간-후에-노출)
    * [종료 시 전면 광고 사용 방법](#종료-시-전면-광고-사용-방법)
+   * [전면 광고 관리를 위한 클래스 AdManager](#전면-광고-관리를-위한-클래스-admanager)
+     * [AdManager를 사용한 전면 광고 로드](#admanager를-사용한-전면-광고-로드)
+     * [AdManager를 사용한 전면 광고 노출](#admanager를-사용한-전면-광고-노출)
+     * [AdManager를 사용하면 전면 광고 로드와 동시에 노출이 가능](#admanager를-사용하면-전면-광고-로드와-동시에-노출이-가능)
 3. [배너 광고 (Banner Ad)](#3-배너-광고-banner-ad)
    * [XML 뷰 삽입 방식](#xml-뷰-삽입-방식)
      * [배너 뷰 생성](#배너-뷰-생성)
@@ -290,7 +294,7 @@ AdManager.getInstance().showInterstitialAd(this, "YOUR-PlACEMENT-ID",new AdListe
 });
 ```
 
-#### AdManager에서는 전면 광고 로드와 동시에 노출이 가능
+#### AdManager를 사용하면 전면 광고 로드와 동시에 노출이 가능
 
 InterstitialAdItem에서는 load() 후 광고 로딩이 완료된 상태에서 show()를 호출해야 광고가 노출되지만 AdManager에서는 아래와 같이 loadInterstitialAd()를 호출함과 동시에 showInterstitialAd()를 호출이 가능합니다. 로드와 노출을 동시에 호출하게 되면 광고 로딩이 완료되는 시점에 노출이 자동으로 호출되어 광고가 보여지게 됩니다.
 
