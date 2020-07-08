@@ -13,6 +13,10 @@
 3. [전면 광고 (Interstitial Ad) 마이그레이션](#3-전면-광고-interstitial-ad-마이그레이션)
    * [구 SDK 사용 방법](#구-sdk-사용-방법)
    * [신규 SDK 사용 방법](#신규-sdk-사용-방법)
+     * [InterstitialAdItem 사용법](interstitial-사용법)
+     * [AdManager 사용법](admanager-사용법)
+       * [전면 광고 로드](전면-광고-로드)
+       * [전면 광고 노출](전면-광고-노출)
    * [차이점](#차이점)
 4. [배너 광고 (Banner Ad) 마이그레이션](#4-배너-광고-banner-ad-마이그레이션)
    * [XML 뷰 삽입 방식](#xml-뷰-삽입-방식)
@@ -147,7 +151,9 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-### 신규 SDK 사용 방법 (InterstitialAdItem 사용)
+### 신규 SDK 사용 방법 
+
+#### InterstitialAdItem 사용법
 
 ```java
 @Override
@@ -175,9 +181,9 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-### 신규 SDK 사용 방법 (AdManager 사용)
+#### AdManager 사용법
 
-#### 전면 광고 로드
+##### 전면 광고 로드
 
 ```java
 // AdListener 미사용시
@@ -193,7 +199,7 @@ AdManager.getInstance().loadInterstitialAd(this, "YOUR-PlACEMENT-ID", new AdList
 });
 ```
 
-#### 전면 광고 노출
+##### 전면 광고 노출
 
 InterstitialAdItem에서는 load() 후 광고 로딩이 완료된 상태에서 show()를 호출해야 광고가 노출되지만 AdManager에서는 loadInterstitialAd()를 호출함과 동시에 showInterstitialAd()를 호출이 가능합니다. 로드와 노출을 동시에 호출하게 되면 광고 로딩이 완료되는 시점에 노출이 자동으로 호출되어 광고가 보여지게 됩니다.
 
@@ -212,8 +218,6 @@ AdManager.getInstance().showInterstitialAd(this, "YOUR-PlACEMENT-ID",new AdListe
 });
 ```
 
-
-
 ### 차이점
 
 1) 전면 광고를 사용방법은 구 SDK에서는 TnkSession 클래스를 통해서만 가능했으나 신규 SDK에서는 **InterstitialAdItem** 클래스로 전면 광고를 사용하는 방법과 AdManager를 이용한 방법 총 2가지가 존재합니다. 기존에 TnkSession에서 전면 광고를 사용하던 방법과 유사한 방법은 AdManager를 사용한 방법 입니다.
@@ -221,8 +225,6 @@ AdManager.getInstance().showInterstitialAd(this, "YOUR-PlACEMENT-ID",new AdListe
 2) 광고 리스너는 AdListener 클래스를 사용합니다. 또한 AdListener 의 메소드들은 필요한 메소드만 구현하시고 사용하지 않는 메소드는 삭제하시면 됩니다.
 
 3) 전면 광고 클릭 감지의 경우 구 SDK에서는 TnkAdListener의 onClose() 매개변수 type을 통해 감지할 수 있었으나 신규 SDK는 **onClick**을 분리하는 것으로 변경되었습니다.
-
-
 
 ## 4. 배너 광고 (Banner Ad) 마이그레이션
 
@@ -366,8 +368,6 @@ protected void onDestroy() {
 }
 
 ```
-
-
 
 #### 신규 SDK 사용 방법
 

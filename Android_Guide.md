@@ -13,8 +13,8 @@
      * [광고 로드 후 일정시간 후에 노출](#광고-로드-후-일정시간-후에-노출)
    * [종료 시 전면 광고 사용 방법](#종료-시-전면-광고-사용-방법)
    * [전면 광고 관리를 위한 클래스 AdManager](#전면-광고-관리를-위한-클래스-admanager)
-     * [AdManager를 사용한 전면 광고 로드](#admanager를-사용한-전면-광고-로드)
-     * [AdManager를 사용한 전면 광고 노출](#admanager를-사용한-전면-광고-노출)
+     * [전면 광고 로드](#전면-광고-로드)
+     * [전면 광고 노출](#전면-광고-노출)
      * [AdManager를 사용하면 전면 광고 로드와 동시에 노출이 가능](#admanager를-사용하면-전면-광고-로드와-동시에-노출이-가능)
 3. [배너 광고 (Banner Ad)](#3-배너-광고-banner-ad)
    * [XML 뷰 삽입 방식](#xml-뷰-삽입-방식)
@@ -259,7 +259,7 @@ Publisher SDK에서 전면 광고를 사용하기 위해서는 InterstitialAdIte
 
 위와 같은 상황에 쉽게 InterstitialAdItem 객체를 유지하고 원하는 액티비티에서 광고 노출을 할 수 있도록 하기 위해 AdManager 클래스가 구현이 되어 있습니다. AdManager는 싱글톤 패턴으로 구현되어 있어 액티비티 1에서 광고를 로드한 뒤 액티비티 2에서 광고를 노출하는 것이 가능합니다.
 
-#### AdManager를 사용한 전면 광고 로드
+#### 전면 광고 로드
 
 아래와 같이 loadInterstitialAd()를 사용하여 전면 광고 로드를 실행할 수 있습니다.
 
@@ -277,7 +277,7 @@ AdManager.getInstance().loadInterstitialAd(this, "YOUR-PlACEMENT-ID", new AdList
 });
 ```
 
-#### AdManager를 사용한 전면 광고 노출
+#### 전면 광고 노출
 
 ```java
 // AdListener 미사용시
