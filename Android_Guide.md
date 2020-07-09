@@ -304,8 +304,6 @@ AdManager.getInstance().loadInterstitialAd(this, "YOUR-PlACEMENT-ID");
 AdManager.getInstance().showInterstitialAd(this, "YOUR-PlACEMENT-ID");
 ```
 
-
-
 ## 3. 배너 광고 (Banner Ad)
 
 배너 광고를 사용하는 방법은 XML 뷰 삽입 방식과 뷰 동적 생성 방식 두 가지가 있습니다.
