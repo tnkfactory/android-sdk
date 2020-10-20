@@ -73,7 +73,7 @@ dependencies {
 
 ```gradle
 dependencies {
-    implementation 'com.tnkfactory.ad:pub:7.07.2'
+    implementation 'com.tnkfactory.ad:pub:7.08.2'
 }
 ```
 

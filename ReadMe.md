@@ -20,6 +20,11 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 
 ### Update Notice
 
+* 2020.10.20
+  * Android SDK v7.08.2 업데이트
+    * 배너 광고 포커스 변경 버그 수정
+    * 내부 기능 개선
+
 * 2020.07.08
   * Android SDK v7.07.2 업데이트
     * AdManager 기능 추가
