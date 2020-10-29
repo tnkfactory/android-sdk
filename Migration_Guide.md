@@ -47,7 +47,7 @@
 
 신규 Publisher SDK를 사용하기 위해서는 기존에 사용하던 구 SDK의 제거 후 사용이 가능합니다.
 
-삽입한 [tnkad_sdk.aar] 파일을 삭제하고 해당 파일을 프로젝트에 참조하던 설정을 제거해주세요.
+**삽입한 [tnkad_sdk.aar] 파일을 삭제하고 해당 파일을 프로젝트에 참조하던 설정을 제거해주세요.**
 
 ##### 삭제 예시
 
@@ -91,7 +91,7 @@ Proguard 를 사용하시는 경우 Proguard 설정 파일에 아래의 내용�
 
 ### Tnk Publisher SDK 가이드
 
-더 상세한 Tnk Publisher SDK 사용방법은 [Tnk Publisher SDK (for Android)](./README.md)를 참조하시면 됩니다. 
+더 상세한 Tnk Publisher SDK 사용방법은 [Tnk Publisher SDK (for Android)](./Android_Guide.md)를 참조하시면 됩니다. 
 
 ## 2. 공통 변경 사항
 
