@@ -20,8 +20,8 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 
 ### Update Notice
 
-* 2020.11.05
-  * Android SDK v7.09.2 업데이트
+* 2020.11.06
+  * Android SDK v7.10.2 업데이트
     * 버그 수정
 
 * 2020.10.20
