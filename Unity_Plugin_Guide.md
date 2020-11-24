@@ -359,9 +359,9 @@ public class TnkUITest : MonoBehaviour {
         Debug.Log("Show Interstitial Ad");
       
       	// Custom Data Setting
-			  TnkPub.Plugin.Instance.clearCustomData();
-			  TnkPub.Plugin.Instance.setCustomData("key1", "data1");
-			  TnkPub.Plugin.Instance.setCustomData("key2", "data2");
+        TnkPub.Plugin.Instance.clearCustomData();
+        TnkPub.Plugin.Instance.setCustomData("key1", "data1");
+        TnkPub.Plugin.Instance.setCustomData("key2", "data2");
 
         TnkPub.Plugin.Instance.prepareInterstitialAd("PLACEMENT_ID", "testhandler");
     }
