@@ -47,7 +47,7 @@
 
 Tnk에서 제공하는 tnkad-pub.unitypackage 파일을 다운 받습니다.
 
-**[[Unity Plugin 다운받기](./sdk/tnkad-pub.unitypackage)]**
+**[[Unity Plugin Download v7.10.2](./sdk/tnkad-pub.unitypackage)]**
 
 ### Plugin Import
 
