@@ -50,6 +50,9 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 
 ### Update Notice
 
+* 2020.11.24
+  * Android SDK v7.10.2 적용
+  * 플러그인 Custom Data 기능 추가
 * 2020.07.08
   * Android SDK v7.07.2 적용
 * 2020.06.17
