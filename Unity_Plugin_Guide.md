@@ -23,7 +23,8 @@
        * [Description](#description-1)
        * [Parameters](#parameters-1)
      * [EventHandler 이용하기](#eventhandler-이용하기)
-     * [Sample](#sample)
+       * [Sample](#sample)
+     * [Custom Data](#custom-data)
 3. [Banner Ad](#3-banner-ad)
    * [Use Banner Ad](#use-banner-ad)
    * [Test Flight](#test-flight-1)
@@ -338,7 +339,7 @@ public class TnkUITest : MonoBehaviour {
 }
 ```
 
-### Custom Data Sample
+### Custom Data
 
 커스텀 데이터를 설정하시면 동영상광고 로드 시점에 콜백URL 호출 시 설정된 값이 key1=value&key2=value2 형태로 추가되어 집니다. 단, prepareInterstitialAd() 가 호출되기 전에 설정해야합니다.
 
