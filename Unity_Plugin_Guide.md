@@ -338,6 +338,40 @@ public class TnkUITest : MonoBehaviour {
 }
 ```
 
+### Custom Data Sample
+
+커스텀 데이터를 설정하시면 동영상광고 로드 시점에 콜백URL 호출 시 설정된 값이 key1=value&key2=value2 형태로 추가되어 집니다. 단, prepareInterstitialAd() 가 호출되기 전에 설정해야합니다.
+
+사용 방법은 아래와 같이 간단합니다.
+
+```c#
+using UnityEngine;
+using System.Collections;
+
+public class TnkUITest : MonoBehaviour {
+
+    ...
+    
+  void OnGUI ()
+  {
+    if (GUI.Button(new Rect(100, 100, 200, 80), "Show Interstitial Ad")) {
+        Debug.Log("Show Interstitial Ad");
+      
+      	// Custom Data Setting
+			  TnkPub.Plugin.Instance.clearCustomData();
+			  TnkPub.Plugin.Instance.setCustomData("key1", "data1");
+			  TnkPub.Plugin.Instance.setCustomData("key2", "data2");
+
+        TnkPub.Plugin.Instance.prepareInterstitialAd("PLACEMENT_ID", "testhandler");
+    }
+  }
+  
+  ...
+}
+```
+
+
+
 ## 3. Banner Ad
 
 전면 광고 적용을 위해서는 Tnk 사이트에서 앱 등록 Unity Plugin 관련 설정이 우선 선행되어야합니다.
