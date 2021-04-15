@@ -20,6 +20,10 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 
 ### Update Notice
 
+* 2021.04.15
+  * Android SDK v7.12.2 업데이트
+    * 배포 저장소 Maven Central 로 이전
+    * 내부 기능 개선
 * 2020.11.06
   * Android SDK v7.10.2 업데이트
     * 버그 수정
@@ -50,6 +54,8 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 
 ### Update Notice
 
+* 2021.04.15
+  * Android SDK v7.12.2 적용
 * 2020.11.24
   * Android SDK v7.10.2 적용
   * 플러그인 Custom Data 기능 추가

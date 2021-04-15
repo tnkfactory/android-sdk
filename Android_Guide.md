@@ -44,14 +44,20 @@
    * [맞춤 이벤트 추가 예시](#맞춤-이벤트-추가-예시)
 
 ## 1. SDK 설정하기
+TNK SDK는 Maven Central에 배포되어 있습니다.
 
+최상위 Level(Project) 의 build.gradle 에 maven repository를 추가해주세요. 
+
+```gradle
+repositories {
+    mavenCentral()
+}
+```
 아래의 코드를 App Module의 build.gradle 파일에 추가해주세요.
-
-[![Download](https://api.bintray.com/packages/tnkfactory/android-sdk/pub/images/download.svg)](https://bintray.com/tnkfactory/android-sdk/pub/_latestVersion)
 
 ```gradle
 dependencies {
-    implementation 'com.tnkfactory.ad:pub:7.10.2'
+    implementation 'com.tnkfactory:pub:7.12.2'
 }
 ```
 
