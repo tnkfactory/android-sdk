@@ -19,7 +19,9 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 [구 SDK에서 마이그레이션 가이드 문서](./Migration_Guide.md)
 
 ### Update Notice
-
+* 2021.05.27
+  * Android SDK v7.13.2 업데이트
+    * 안드로이드 11 패키지 공개 상태 변경 대응
 * 2021.04.15
   * Android SDK v7.12.2 업데이트
     * 배포 저장소 Maven Central 로 이전
