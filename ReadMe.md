@@ -55,7 +55,8 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 [유니티 플러그인 가이드 문서](./Unity_Plugin_Guide.md)
 
 ### Update Notice
-
+* 2021.05.31
+  * Android SDK v7.13.2 적용
 * 2021.04.15
   * Android SDK v7.12.2 적용
 * 2020.11.24
