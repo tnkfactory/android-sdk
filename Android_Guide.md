@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
         // 전면 광고 객체 생성
         InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this,"YOUR-PlACEMENT-ID");
       	// AdListener를 사용해 전면 광고가 로드되는 시점에 노출
-        interstitialAdItem.setLisenter(new AdListener() {
+        interstitialAdItem.setListener(new AdListener() {
             @Override
             public void onLoad(AdItem adItem) {
                 adItem.show();
