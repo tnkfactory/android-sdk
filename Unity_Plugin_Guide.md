@@ -5,6 +5,8 @@
 1. [Unity Settings](#1-unity-settings)
    * [Plugin Download](#plugin-download)
    * [Plugin Import](#plugin-import)
+   * [baseProjectTemplate.gradle 설정](#baseprojecttemplategradle-설정)
+   * [mainTemplate.gradle 설정](#maintemplategradle-설정)
    * [AdnroidMenifest.xml 설정](#adnroidmenifestxml-설정)
      * [Permission 설정](#permission-설정)
      * [Tnk Pub ID 설정](#tnk-pub-id-설정)
@@ -48,7 +50,7 @@
 
 Tnk에서 제공하는 tnkad-pub.unitypackage 파일을 다운 받습니다.
 
-**[[Unity Plugin Download v7.13.2](./sdk/tnkad-pub.unitypackage)]**
+**[[Unity Plugin Download v7.15.2](./sdk/tnkad-pub.unitypackage)]**
 
 ### Plugin Import
 
@@ -57,6 +59,28 @@ Tnk에서 제공하는 tnkad-pub.unitypackage 파일을 다운 받습니다.
 ![Unity_01](./img/Unity_01.png)
 
 모두 선택된 상태에서 [import] 버튼을 누르면 Plugin 파일들이 프로젝트로 import 됩니다.
+
+모든 파일을 import 할 필요는 없습니다. Plugins/Android 폴더내에 이미 있는 파일이 존재한다면 무조건 import를 하지마시고 아래 가이드를 통해 필요한 부분만 추가 및 변경하셔서 사용할 것을 권장합니다.
+
+### baseProjectTemplate.gradle 설정
+
+baseProjectTemplate.gradle 파일에 maven repository를 추가해주세요.
+
+```gradle
+repositories {
+    mavenCentral()
+}
+```
+
+### mainTemplate.gradle 설정
+
+mainTemplate.gradle 파일에 TNK SDK 설정을 추가해주세요.
+
+```gradle
+dependencies {
+    implementation 'com.tnkfactory:pub:7.15.2'
+}
+```
 
 ### AdnroidMenifest.xml 설정
 
@@ -110,7 +134,7 @@ Plugin 내에는 TnkAdAndroidMenifest.xml 파일이 포함되어 있습니다. �
     </activity>
     
     <!-- Set your Tnk Pub ID here -->
-    <meta-data android:name="tnkad_pub_id" android:value="your-appid-from-tnk-site" />
+    <meta-data android:name="tnk_pub_id" android:value="your-appid-from-tnk-site" />
   </application>
   
   <uses-feature android:glEsVersion="0x00020000" />
@@ -138,7 +162,7 @@ Tnk 사이트에서 앱 등록하면 상단에 App ID 가 나타납니다. 이�
 
      ...
 
-    <meta-data android:name="tnkad_pub_id" android:value="your-application-id-from-tnk-site" />
+    <meta-data android:name="tnk_pub_id" android:value="your-application-id-from-tnk-site" />
 
 </application>
 ```
