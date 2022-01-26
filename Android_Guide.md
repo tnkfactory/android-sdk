@@ -46,7 +46,7 @@
 ## 1. SDK 설정하기
 TNK SDK는 Maven Central에 배포되어 있습니다.
 
-최상위 Level(Project) 의 build.gradle 에 maven repository를 추가해주세요. 
+최상위 Level(Project) 의 build.gradle 에 maven repository를 추가해주세요.
 
 ```gradle
 repositories {
@@ -57,7 +57,7 @@ repositories {
 
 ```gradle
 dependencies {
-    implementation 'com.tnkfactory:pub:7.15.2'
+    implementation 'com.tnkfactory:pub:7.17.2'
 }
 ```
 
@@ -66,6 +66,13 @@ AndroidManifest.xml 파일에 아래의 권한을 추가해주세요.
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
+
+동영상 광고 적용 시 **ACCESS_WIFI_STATE** 권한은 필수 설정 권한입니다.
+
+```xml
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+```
+
 Proguard 를 사용하시는 경우 Proguard 설정 파일에 아래의 내용을 반드시 넣어주세요.
 
 ```proguard
@@ -91,7 +98,7 @@ InterstitialAdItem adItem = new InterstitialAdItem(this,"TEST_INTERSTITIAL_V", n
         }
     });
 
-adItem.load(); 
+adItem.load();
 ```
 > 배너 광고 (Banner Ad)
 
@@ -170,7 +177,7 @@ public void onCreate(Bundle savedInstanceState) {
   ...
 
     InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this, "YOUR-PlACEMENT-ID");
-    
+
   ...
 }
 ```
@@ -200,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
 
       	// 전면 광고 로드
         interstitialAdItem.load();
-        
+
       ...
     }
 }
@@ -218,7 +225,7 @@ interstitialAdItem.load();
 
 ...
 
-// 일정시간 후에 광고가 로드 되었는지 확인 후 show 호출 
+// 일정시간 후에 광고가 로드 되었는지 확인 후 show 호출
 // load와 show를 동시 호출하면 광고 미로드 상태로 전면 광고가 노출되지 않습니다.
 if (interstitialAdItem.isLoaded()) {
     interstitialAdItem.show();
@@ -229,10 +236,10 @@ if (interstitialAdItem.isLoaded()) {
 
 ```java
 ...
-  
+
 // InterstitialAdItem 생성한 액티비티가 아닌 액티비티가 변경되었을 경우 아래와 같이
 // show() 호출시 Context 교체를 해줘야 현재 화면에서 광고가 노출됩니다.
-interstitialAdItem.show(this); 
+interstitialAdItem.show(this);
 ```
 
 ### 종료 시 전면 광고 사용 방법
@@ -329,13 +336,13 @@ AdManager.getInstance().showInterstitialAd(this, "YOUR-PlACEMENT-ID");
    ...
    >
       ...
-  
+
         <com.tnkfactory.ad.BannerAdView
             android:id="@+id/banner_ad_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:placement_id="YOUR-PLACEMENT-ID" />
-  
+
       ...
 </RelativeLayout>
 ```
@@ -351,16 +358,16 @@ XML에 삽입된 배너 뷰에 아래와 같이 광고를 로드합니다.
 
 ```java
 public class MainActivity extends AppCompatActivity {
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	...
-        
+
         BannerAdView bannerAdView = findViewById(R.id.banner_ad_view);
-    
+
     		// 배너 광고 로드
         bannerAdView.load();
-    
+
     	...
     }
 }
@@ -377,12 +384,12 @@ public class MainActivity extends AppCompatActivity {
    ...
    >
       ...
-  
+
         <RelativeLayout
             android:id="@+id/banner_ad_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-  
+
       ...
 </RelativeLayout>
 ```
@@ -402,18 +409,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
       ...
-        
+
         RelativeLayout bannerAdLayout = findViewById(R.id.banner_ad_layout);
-      
+
       	// 배너 뷰 객체 생성
         BannerAdView bannerAdView = new BannerAdView(this, "YOUR-PLACEMENT-ID");
-      
+
       	// 부모 레이아웃에 배너 뷰 삽입
         bannerAdLayout.addView(bannerAdView);
 
       	// 배너 광고 로드
         bannerAdView.load();
-      
+
       ...
     }
 }
@@ -436,13 +443,13 @@ public class MainActivity extends AppCompatActivity {
    ...
    >
       ...
-  
+
         <com.tnkfactory.ad.FeedAdView
             android:id="@+id/feed_ad_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:placement_id="YOUR-PLACEMENT-ID"/>
-  
+
       ...
 </RelativeLayout>
 ```
@@ -481,12 +488,12 @@ public class MainActivity extends AppCompatActivity {
    ...
    >
       ...
-  
+
         <RelativeLayout
             android:id="@+id/feed_ad_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-  
+
       ...
 </RelativeLayout>
 ```
@@ -506,7 +513,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
       ...
-        
+
         RelativeLayout feedAdLayout = findViewById(R.id.feed_ad_layout);
 
         // 피드 뷰 객체 생성
@@ -517,7 +524,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 피드 광고 로드
         feedAdView.load();
-      
+
       ...
     }
 }
@@ -527,7 +534,7 @@ public class MainActivity extends AppCompatActivity {
 
 ## 5. 네이티브 광고 (Native Ad)
 
-### 레이아웃 생성 
+### 레이아웃 생성
 
 네이티브 광고를 보여줄 레이아웃(native_ad_item.xml)을 생성합니다.
 
@@ -610,7 +617,7 @@ public void onCreate(Bundle savedInstanceState) {
   ...
 
     NativeAdItem nativeAdItem = new NativeAdItem(this, "YOUR-PlACEMENT-ID");
-    
+
   ...
 }
 ```
@@ -624,7 +631,7 @@ public void onCreate(Bundle savedInstanceState) {
 ```java
 public class MainActivity extends AppCompatActivity {
   ...
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
       ...
@@ -643,12 +650,12 @@ public class MainActivity extends AppCompatActivity {
 
         // 네이티브 광고 로드
         nativeAdItem.load();
-      
+
       ...
     }
 
   ...
-    
+
     // 네이티브 광고 노출
     private void showNativeAd(NativeAdItem nativeAdItem) {
 
@@ -676,7 +683,7 @@ public class MainActivity extends AppCompatActivity {
             nativeAdItem.attach(view, binder);
         }
     }
-  
+
   ...
 }
 ```
@@ -692,7 +699,7 @@ NativeAdItem nativeAdItem = new NativeAdItem(this,"YOUR-PlACEMENT-ID");
 nativeAdItem.load();
 
 ...
-  
+
 // 일정시간 후에 광고가 로드 되었는지 확인 후 show 호출
 // load와 show를 동시 호출하면 광고 미로드 상태로 전면 광고가 노출되지 않습니다.
 if (nativeAdItem.isLoaded()) {
@@ -782,7 +789,7 @@ public abstract class AdListener {
      * @param type 0:simple close, 1: auto close, 2:exit
      */
     public void onClose(AdItem adItem, int type) {
-      
+
     }
 
     /**
@@ -791,7 +798,7 @@ public abstract class AdListener {
      * @param adItem 이벤트 대상이되는 AdItem 객체
      */
     public void onClick(AdItem adItem) {
-      
+
     }
 
     /**
@@ -825,7 +832,7 @@ public abstract class AdListener {
      * @param verifyCode 동영상 시청 완료 콜백 결과.
      */
     public void onVideoCompletion(AdItem adItem, int verifyCode) {
-   
+
     }
 }
 ```
@@ -842,7 +849,7 @@ public abstract class AdListener {
 
 AdMob 로그인 후 메뉴에서 미디에이션 탭을 누르시면 아래 이미지와 같이 미디에이션 그룹을 만들 수 있는 화면이 표시됩니다.
 
-[미디에이션 그룹 만들기] 버튼을 클릭하셔서 그룹을 생성해 주세요. 
+[미디에이션 그룹 만들기] 버튼을 클릭하셔서 그룹을 생성해 주세요.
 
 ![mediation_guide_01](./google_mediation/img/mediation_guide_01.png)
 
