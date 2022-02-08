@@ -1,4 +1,4 @@
-# Tnkfactory SDK Pub (Android)
+# Tnkfactory Pub SDK (Android)
 
 Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 
