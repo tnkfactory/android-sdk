@@ -6,7 +6,7 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 * 배너 광고(Banner Ad)
 * 네이티브 광고(Native Ad)
 * 피드형 광고(Feed Ad)
-* 리워드 광고(Reward Ad)
+* 동영상 리워드 광고(Video Reward Ad)
 
 ## Android
 
