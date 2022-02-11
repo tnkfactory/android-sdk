@@ -861,6 +861,6 @@ AdMob 로그인 후 메뉴에서 미디에이션 탭을 누르시면 아래 이�
 
 
 
-맞춤 이벤트 추가 시 Class Name 항목에 개발중인 앱 프로젝트에 복사해 넣은 맞춤이벤트 어댑터의 실제 결로를 입력합니다.
+맞춤 이벤트 추가 시 Class Name 항목에 개발중인 앱 프로젝트에 복사해 넣은 맞춤이벤트 어댑터의 실제 경로를 입력합니다.
 
 ![mediation_guide_03](./google_mediation/img/mediation_guide_03.png)
