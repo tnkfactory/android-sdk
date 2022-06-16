@@ -268,6 +268,7 @@ public class TestActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         //super.onBackPressed();
+	// 광고가 로드되기 전에 호출되거나 광고를 불러오지 못했을 경우 광고가 없는 종료 다이얼로그가 출력됩니다.
         closeAdItem.show();
     }
 }
@@ -279,6 +280,7 @@ public class TestActivity extends AppCompatActivity {
     closeAdItem.setListener(new CloseAdItem.CloseAdListener() {
 
         // 종료팝업 광고를 출력하지 못했을 경우 일반적인 종료팝업 출력
+	// 광고가 로드되기 전에 호출되거나 광고를 불러오지 못했을 경우 onError가 호출됩니다.
         @Override
         public void onError() {
             new AlertDialog.Builder(TestActivity.this)
