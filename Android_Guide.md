@@ -246,85 +246,27 @@ interstitialAdItem.show(this);
 
 '2-Button' 프레임을 사용하여 앱 종료 시 전면 팝업 광고를 자연스럽게 삽입 가능합니다.
 
-우선 Publisher Site 에서 해당 Placement의 프레임을 2-Button 프레임으로 설정하시고 onBackPressed등 종료처리를 하는 부분을 다음과 같이 구현하시면 됩니다.
+우선 Publisher Site 에서 해당 Placement의 프레임을 2-Button 프레임으로 설정하시고, 앱에서 종료버튼 클릭시 처리내용을 AdListener의 onClose() 에서 아래의 내용을 참고하여 구현하시면 됩니다.
 
 ```java
-public class TestActivity extends AppCompatActivity {
+interstitialAdItem.setListener(new AdListener() {
+  ...
 
-    // 종료 팝업을 출력하기 위한 광고 아이템 변수 선언
-    CloseAdItem closeAdItem;
-
+    /**
+     * 화면 닫힐 때 호출됨
+     * @param adItem 이벤트 대상이되는 AdItem 객체
+     * @param type 0:simple close, 1: auto close, 2:exit
+     */
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        // 광고 아이템 생성
-        closeAdItem = new CloseAdItem(this, "placement-id");
-        // 광고 아이템 로드
-        closeAdItem.load();
-
+    public void onClose(AdItem adItem, int type) {
+        // 종료 버튼 선택 시 앱을 종료합니다.
+        if (type == AdListener.CLOSE_EXIT) {
+            MainActivity.this.finish();
+        }
     }
 
-    @Override
-    public void onBackPressed() {
-        //super.onBackPressed();
-	// 광고가 로드되기 전에 호출되거나 광고를 불러오지 못했을 경우 광고가 없는 종료 다이얼로그가 출력됩니다.
-        closeAdItem.show();
-    }
-}
-```
-
-세부 이벤트 처리를 구현 할 필요가 있을 경우 다음과 같이 Listener를 등록하여 구현 할 수 있습니다.
-
-```java
-    closeAdItem.setListener(new CloseAdItem.CloseAdListener() {
-
-        // 종료팝업 광고를 출력하지 못했을 경우 일반적인 종료팝업 출력
-	// 광고가 로드되기 전에 호출되거나 광고를 불러오지 못했을 경우 onError가 호출됩니다.
-        @Override
-        public void onError() {
-            new AlertDialog.Builder(TestActivity.this)
-                    .setMessage("앱을 종료하시겠습니까?")
-                    .setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                        }
-                    })
-                    .setPositiveButton("종료", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-				finish();
-                        }
-                    })
-                    .show();
-        }
-        // 종료팝업에서 확인 버튼을 눌렀을 경우 처리
-        @Override
-        public void onConfirm() {
-            finish();
-        }
-
-        // 사용자가 종료팝업에서 취소 버튼을 눌렀을 경우 처리
-        @Override
-        public void onCancel() {
-            super.onCancel();
-        }
-
-        // 사용자가 광고를 클릭했을 경우 google analytics 등을 사용하여 이벤트 트래킹을 할 경우 구현합니다.
-        @Override
-        public void onClickAd(AdItem adItem) {
-            super.onClickAd(adItem);
-        }
-
-        // 광고 팝업이 출력되면 호출됩니다.
-        @Override
-        public void onShow(AdItem adItem) {
-            super.onShow(adItem);
-        }
-
-    });
-
+  ...
+});
 ```
 
 ### 전면 광고 관리를 위한 클래스 AdManager
