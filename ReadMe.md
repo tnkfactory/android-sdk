@@ -19,6 +19,9 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 [구 SDK에서 마이그레이션 가이드 문서](./Migration_Guide.md)
 
 ### Update Notice
+* 2022.09.15
+  * Android SDK v7.20.2 업데이트
+  * 로딩성능 개선
 * 2022.06.17
   * Android SDK v7.19.2 업데이트
   * 종료 전면팝업 아이템 추가
