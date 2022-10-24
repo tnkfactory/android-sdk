@@ -19,13 +19,14 @@
         <activity android:name=".native_ad.NativeActivity" />
         <activity android:name=".Interstitial_ad.InterstitialActivity" />
         <activity android:name=".banner_ad.BannerActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>
