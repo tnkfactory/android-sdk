@@ -89,7 +89,7 @@ Proguard 를 사용하시는 경우 Proguard 설정 파일에 아래의 내용�
 링크 : [테스트 단말기 등록방법](https://github.com/tnkfactory/android-sdk/blob/master/reg_test_device.md)
 
 ```diff
-- 주의 2 : 앱 시작시 전면 광고를 출력 할 경우 메인화면 컨텐츠가 출력된 이후 전면광고가 출력되면 안됩니다.
+- 주의 2 : 앱 시작시 전면 광고를 출력 할 경우 로딩 화면(스플래시 화면)에 노출하시는 것을 권장합니다.
 ```
 구글 정책 [링크](https://support.google.com/googleplay/android-developer/answer/12253906?hl=ko) 참조
 
