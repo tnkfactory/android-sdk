@@ -57,7 +57,7 @@ repositories {
 
 ```gradle
 dependencies {
-    implementation 'com.tnkfactory:pub:7.20.2'
+    implementation 'com.tnkfactory:pub:7.21.2'
 }
 ```
 
