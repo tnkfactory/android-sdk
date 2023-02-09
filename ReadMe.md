@@ -19,6 +19,9 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 [구 SDK에서 마이그레이션 가이드 문서](./Migration_Guide.md)
 
 ### Update Notice
+* 2023.02.09
+  * Android SDK v7.21.4 업데이트
+  * 함수호출을 통해 publisher id설정 할 수 있는 기능 추가
 * 2022.11.11
   * Android SDK v7.21.2 업데이트
   * DSP 동영상 광고 추가
