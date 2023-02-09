@@ -168,6 +168,7 @@ Test Flight 에서는 별도로 계정등록을 하지않아도 간단히 테스
 AndroidManifest에 pubid를 설정하지 않고 함수 호출을 통해 Publisher ID를 설정하시려면 AdConfiguration.setPublisherId(context, pubid)를 사용 하시기 바랍니다.
 **만약 AndroidManifest에 등록된 tnk_pub_id값이 있는 경우 그 값이 우선 적용됩니다.**
 ```java
+// 
 AdConfiguration.setPublisherId(this, "30d334.......91204df05d");
 ```
 **(Test Flight의 PLACEMENT_ID를 사용하여 테스트를 진행하기 위해서는 Publisher ID를 등록하지 않고 진행 하셔야합니다.)**
