@@ -44,20 +44,46 @@
    * [맞춤 이벤트 추가 예시](#맞춤-이벤트-추가-예시)
 
 ## 1. SDK 설정하기
-TNK SDK는 Maven Central에 배포되어 있습니다.
 
 최상위 Level(Project) 의 build.gradle 에 maven repository를 추가해주세요.
 
+**maven { url 'https://repository.tnkad.net:8443/repository/maven-releases/' }**
+
 ```gradle
-repositories {
-    mavenCentral()
+subprojects {
+    repositories {
+        mavenCentral()
+        maven { url 'https://repository.tnkad.net:8443/repository/maven-releases/' }
+    }
 }
 ```
+
+만약 build.gradle에 위와같은 코드가 존재하지 않을 경우 settings.gralde에 아래와 같이 추가 하시면 됩니다.
+```gradle
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://repository.tnkad.net:8443/repository/maven-releases/' }
+    }
+
+}
+```
+
+
 아래의 코드를 App Module의 build.gradle 파일에 추가해주세요.
 
 ```gradle
 dependencies {
-    implementation 'com.tnkfactory:pub:7.21.4'
+    implementation 'com.tnkfactory:pub:7.21.5'
 }
 ```
 
