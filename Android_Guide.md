@@ -47,13 +47,13 @@
 
 최상위 Level(Project) 의 build.gradle 에 maven repository를 추가해주세요.
 
-**maven { url 'https://repository.tnkad.net:8443/repository/maven-releases/' }**
+**maven { url 'https://repository.tnkad.net:8443/repository/public/' }**
 
 ```gradle
 subprojects {
     repositories {
         mavenCentral()
-        maven { url 'https://repository.tnkad.net:8443/repository/maven-releases/' }
+        maven { url 'https://repository.tnkad.net:8443/repository/public/' }
     }
 }
 ```
@@ -72,7 +72,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://repository.tnkad.net:8443/repository/maven-releases/' }
+        maven { url 'https://repository.tnkad.net:8443/repository/public/' }
     }
 
 }
