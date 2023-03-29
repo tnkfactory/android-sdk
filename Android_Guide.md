@@ -83,7 +83,7 @@ dependencyResolutionManagement {
 
 ```gradle
 dependencies {
-    implementation 'com.tnkfactory:pub:7.21.5'
+    implementation 'com.tnkfactory:pub:7.21.7'
 }
 ```
 
