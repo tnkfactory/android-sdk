@@ -5,6 +5,7 @@
 1. [SDK 설정하기](#1-sdk-설정하기)
    * [Test Flight](#test-flight)
    * [Publisher ID 등록하기](#publisher-id-등록하기)
+   * [테스트 기기 등록](#테스트-기기-등록)
    * [COPPA 설정](#coppa-설정)
 2. [전면 광고 (Interstitial Ad)](#2-전면-광고-interstitial-ad)
    * [전면 광고 객체 생성](#전면-광고-객체-생성)
@@ -110,12 +111,7 @@ Proguard 를 사용하시는 경우 Proguard 설정 파일에 아래의 내용�
 아래의 코드를 사용하어 간단하게 테스트 광고를 띄워보세요.
 
 ```diff
-- 주의 1 : 테스트 상태에서는 테스트하는 장비를 개발 장비로 등록하셔야 테스트 광고가 정상적으로 나타납니다.
-```
-링크 : [테스트 단말기 등록방법](https://github.com/tnkfactory/android-sdk/blob/master/reg_test_device.md)
-
-```diff
-- 주의 2 : 앱 시작시 전면 광고를 출력 할 경우 로딩 화면(스플래시 화면)에 노출하시는 것을 권장합니다.
+- 주의 1 : 앱 시작시 전면 광고를 출력 할 경우 로딩 화면(스플래시 화면)에 노출하시는 것을 권장합니다.
 ```
 구글 정책 [링크](https://support.google.com/googleplay/android-developer/answer/12253906?hl=ko) 참조
 
@@ -193,12 +189,24 @@ Test Flight 에서는 별도로 계정등록을 하지않아도 간단히 테스
 
 tnk_pub_id 값 설정을 위한 API 가 별도로 제공됩니다. 이를 사용하시면 AndroidManifest.xml 파일에 등록하지 않고 tnk_pub_id 값을 설정할 수 있습니다. 
 AndroidManifest에 tnk_pub_id 설정하지 않고 함수 호출을 통해 Publisher ID를 설정하시려면 AdConfiguration.setPublisherId(context, pubid)를 사용 하시기 바랍니다.
+
 **만약 AndroidManifest에 등록된 tnk_pub_id값이 있는 경우 그 값이 우선 적용됩니다.**
+**(Test Flight의 PLACEMENT_ID를 사용하여 테스트를 진행하기 위해서는 Publisher ID를 등록하지 않고 진행 하셔야합니다.)**
+
 ```java
 // 사용예
 AdConfiguration.setPublisherId(this, "30d334.......91204df05d");
 ```
-**(Test Flight의 PLACEMENT_ID를 사용하여 테스트를 진행하기 위해서는 Publisher ID를 등록하지 않고 진행 하셔야합니다.)**
+
+### 테스트 기기 등록
+
+pub_id를 설정하셨다면 앱을 테스트 상태로 전환 후 테스트 단말기 등록을 진행합니다.
+
+링크 : [테스트 단말기 등록방법](https://github.com/tnkfactory/android-sdk/blob/master/reg_test_device.md)
+
+```diff
+- 주의 1 : pub_id등록 후 테스트 상태에서는 테스트하는 장비를 개발 장비로 등록하셔야 테스트 광고가 정상적으로 나타납니다.
+```
 
 ### COPPA 설정
 
