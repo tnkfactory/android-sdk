@@ -20,6 +20,10 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 
 ### Update Notice
 
+* 2024.02.29
+  * Android SDK v7.21.8 업데이트
+  * 내부 기능 개선
+
 * 2023.03.29
   * Android SDK v7.21.7 업데이트
   * 트래킹 기능 수정
