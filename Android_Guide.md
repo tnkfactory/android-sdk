@@ -41,6 +41,7 @@
 6. [동영상 광고 (Video Ad)](#6-동영상-광고-video-ad)
    * [리워드 동영상 광고 적립 여부 확인](#리워드-동영상-광고-적립-여부-확인)
 7. [AdListener 사용 방법](#7-adlistener-사용-방법)
+   * [에러처리](#에러처리)
 8. [미디에이션 (Mediation)](#8-미디에이션-mediation)
    * [맞춤 이벤트 추가 예시](#맞춤-이벤트-추가-예시)
 
@@ -931,7 +932,8 @@ public abstract class AdListener {
      * @param error AdError
      */
     public void onError(AdItem adItem, AdError error) {
-
+        String errorMessage = error.getMessage();
+        Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -949,6 +951,122 @@ public abstract class AdListener {
      */
     public void onVideoCompletion(AdItem adItem, int verifyCode) {
 
+    }
+}
+```
+
+### 에러처리
+
+에러 발생시 아래와 같이 AdListener의 onError에서 광고를 불러오지 못했을 경우의 예외처리를 하실 수 있습니다.
+```java
+InterstitialAdItem adSample = new InterstitialAdItem(context,"test_ad");
+adSample.setListener(new AdListener() {
+    @Override
+    public void onError(AdItem adItem, AdError error) {
+    super.onError(adItem, error);
+    String errorMessage = error.getMessage();
+    Log.d("TNK_AD", errorMessage);
+
+    // 광고 로드 실패시 바로 메인화면으로 이동
+    Intent intent = new Intent(context, MainActivity.class);
+    startActivity(intent)
+}
+
+```
+에러 AdError 클래스는 아래와 같이 정의되어있습니다.
+```java
+public enum AdError {
+    NO_ERROR(0),
+    FAIL_NO_AD(-1),
+    FAIL_NO_IMAGE(-2),
+    FAIL_TIMEOUT(-3),
+    FAIL_CANCELED(-4),
+    FAIL_SHOW_BEFORE_LOAD(-5),
+    FAIL_AD_FRAME(-6),
+    FAIL_DUP_LOAD(-7),
+    FAIL_DUP_SHOW(-8),
+    FAIL_BANNER_HEIGHT_50DP(-21),
+    FAIL_BANNER_HEIGHT_100DP(-22),
+    FAIL_NO_PLACEMENT_ID(-23),
+    FAIL_INCORRECT_PLACEMENT(-24),
+    FAIL_SCREEN_ORIENTATION(-25),
+    FAIL_INVALID_STATE(-26),
+    FAIL_BANNER_ON_PAUSE(-27),
+    FAIL_TEST_DEVICE_NOT_REGISTERED(-28),
+    FAIL_FINISHED_ACTIVITY(-29),
+    FAIL_SYSTEM(-99);
+
+    private final int code;
+
+    AdError(int code) {
+        this.code = code;
+    }
+
+    public int getValue() {
+        return code;
+    }
+
+    public String getMessage() {
+        String message = "";
+
+        switch (this) {
+            case NO_ERROR:
+                message = "Success.";
+                break;
+            case FAIL_NO_AD:
+                message = "No ad available.";
+                break;
+            case FAIL_NO_IMAGE:
+                message = "Ad creative not available.";
+                break;
+            case FAIL_TIMEOUT:
+                message = "Ad arrived too late.";
+                break;
+            case FAIL_CANCELED:
+                message = "Ad requested too frequently.";
+                break;
+            case FAIL_SHOW_BEFORE_LOAD:
+                message = "Ad show called before ad is loaded.";
+                break;
+            case FAIL_AD_FRAME:
+                message = "Cannot build ad layout.";
+                break;
+            case FAIL_DUP_LOAD:
+                message = "Ad load called while in loading or showing state.";
+                break;
+            case FAIL_DUP_SHOW:
+                message = "Ad show called while ad is showing";
+                break;
+            case FAIL_BANNER_HEIGHT_50DP:
+                message = "Height of banner is too small(<50dp).";
+                break;
+            case FAIL_BANNER_HEIGHT_100DP:
+                message = "Height of banner is too small(<100dp).";
+                break;
+            case FAIL_NO_PLACEMENT_ID:
+                message = "Placement ID is not specified.";
+                break;
+            case FAIL_INCORRECT_PLACEMENT:
+                message = "Publisher Id or Placement Id is not registered.";
+                break;
+            case FAIL_SCREEN_ORIENTATION:
+                message = "Ad orientation is not matched with screen.";
+                break;
+            case FAIL_INVALID_STATE:
+                message = "AdItem is not initialized or destroyed.";
+                break;
+            case FAIL_TEST_DEVICE_NOT_REGISTERED:
+                message = "Test device not registered.";
+                break;
+            case FAIL_FINISHED_ACTIVITY:
+                message = "Trying to display using finished Activity.";
+                break;
+            case FAIL_SYSTEM:
+                message = "System error.";
+                break;
+        }
+
+        return message;
     }
 }
 ```
