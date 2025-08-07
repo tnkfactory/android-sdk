@@ -20,6 +20,10 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 
 ### Update Notice
 
+* 2025.08.07
+  * Android SDK v7.23.80 업데이트
+  * android 15 edgetoedge 대응 
+    
 * 2024.03.15
   * Android SDK v7.21.9 업데이트
   * 리사이클러뷰에서 네이티브 광고 출력시 리사이징 문제 수정
