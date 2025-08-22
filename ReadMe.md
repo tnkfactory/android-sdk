@@ -21,7 +21,7 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 ### Update Notice
 
 * 2025.08.07
-  * Android SDK v7.23.80 업데이트
+  * Android SDK v7.23.83 업데이트
   * android 15 edgetoedge 대응 
     
 * 2024.03.15
