@@ -20,6 +20,10 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 
 ### Update Notice
 
+* 2025.08.25
+  * Android SDK v7.23.85 업데이트
+  * 보상형 sdk와 동시 사용시 의존성 충돌 발생하는 오류 수정
+
 * 2025.08.07
   * Android SDK v7.23.83 업데이트
   * android 15 edgetoedge 대응 
