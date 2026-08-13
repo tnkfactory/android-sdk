@@ -39,7 +39,9 @@
      * [광고 로드 후 바로 노출](#광고-로드-후-바로-노출-1)
      * [광고 로드 후 일정시간 후에 노출](#광고-로드-후-일정시간-후에-노출-1)
 6. [동영상 광고 (Video Ad)](#6-동영상-광고-video-ad)
-   * [리워드 동영상 광고 적립 여부 확인](#리워드-동영상-광고-적립-여부-확인)
+   * [전면 동영상 광고 (Interstitial Video Ad)](#전면-동영상-광고-interstitial-video-ad)
+   * [리워드 동영상 광고 (Reward Video Ad)](#리워드-동영상-광고-reward-video-ad)
+     * [리워드 동영상 광고 적립 여부 확인](#리워드-동영상-광고-적립-여부-확인)
 7. [AdListener 사용 방법](#7-adlistener-사용-방법)
    * [에러처리](#에러처리)
 8. [미디에이션 (Mediation)](#8-미디에이션-mediation)
@@ -846,14 +848,73 @@ if (nativeAdItem.isLoaded()) {
 
 ## 6. 동영상 광고 (Video Ad)
 
-동영상 광고는 전면 광고와 사용 방법이 같아서 Placement ID를 생성할 때 동영상 광고 설정을 진행해주시고 [전면 광고 가이드](#2-전면-광고-interstitial-ad)를 그대로 활용하시면 됩니다.
+### 전면 동영상 광고 (Interstitial Video Ad)
 
-### 리워드 동영상 광고 적립 여부 확인
+동영상 재생이 포함된 전면 광고는 Placement ID를 생성할 때 동영상 광고 설정을 진행해주시고 [전면 광고 가이드](#2-전면-광고-interstitial-ad)를 그대로 활용하시면 됩니다. `InterstitialAdItem`을 그대로 사용합니다.
 
-리워드 동영상 광고의 경우 재생 완료 후 AdListener를 사용하여 적립 여부를 확인할 수 있습니다.
+### 리워드 동영상 광고 (Reward Video Ad)
+
+리워드 동영상 광고는 전용 클래스인 `RewardVideoAdItem`으로 생성합니다. `InterstitialAdItem`으로 `TEST_REWARD_V` 등 리워드 지면을 요청하는 방식은 사용하지 마세요 — 반드시 `RewardVideoAdItem`을 사용해야 합니다.
+
+SDK 클래스들을 import 해주세요.
+```java
+import com.tnkfactory.ad.*;
+```
+
+아래와 같이 Placement ID를 입력하여 리워드 동영상 광고 객체를 생성합니다.
+```java
+@Override
+public void onCreate(Bundle savedInstanceState) {
+  ...
+
+    RewardVideoAdItem rewardVideoAdItem = new RewardVideoAdItem(this, "YOUR-PlACEMENT-ID");
+
+  ...
+}
+```
+
+`setListener()`에는 반드시 `RewardVideoAdListener`를 등록해야 합니다. 일반 `AdListener`를 등록하면 광고가 로드/노출되지 않고 `onError()`가 `AdError.FAIL_MUST_SET_REWARD_VIDEO_LISTENER`로 즉시 호출됩니다.
 
 ```java
-RewardVideoAdItem.setListener(new RewardVideoAdListener() {
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+      ...
+
+        // 리워드 동영상 광고 객체 생성
+        RewardVideoAdItem rewardVideoAdItem = new RewardVideoAdItem(this, "YOUR-PlACEMENT-ID");
+        // RewardVideoAdListener를 사용해 광고가 로드되는 시점에 노출
+        rewardVideoAdItem.setListener(new RewardVideoAdListener() {
+            @Override
+            public void onLoad(AdItem adItem) {
+                adItem.show();
+            }
+        });
+
+        // 리워드 동영상 광고 로드 (반드시 UI 스레드에서 호출해주세요)
+        rewardVideoAdItem.load();
+
+      ...
+    }
+}
+```
+
+로드를 미리 해두고 필요한 시점에 노출하려면 전면 광고와 동일하게 `isLoaded()`로 로드 완료 여부를 확인한 후 `show()`를 호출하면 됩니다. `load()`/`show()`는 반드시 UI 스레드에서 호출해주세요.
+
+```java
+// 일정 시간 후에 광고가 로드 되었는지 확인 후 show 호출
+if (rewardVideoAdItem.isLoaded()) {
+    rewardVideoAdItem.show();
+}
+```
+
+#### 리워드 동영상 광고 적립 여부 확인
+
+리워드 동영상 광고의 경우 재생 완료 후 `RewardVideoAdListener`의 `onVideoCompletion()`을 사용하여 적립 여부를 확인할 수 있습니다.
+
+```java
+rewardVideoAdItem.setListener(new RewardVideoAdListener() {
   ...
 
     /**
@@ -871,18 +932,22 @@ RewardVideoAdItem.setListener(new RewardVideoAdListener() {
             // 적립 실패
         }
     }
-    /** 로드된 광고를 화면에 출력하는 과정에서 오류 발생시 호출됩니다.
+
+    /**
+     * 로드된 광고를 화면에 출력하는 과정에서 오류 발생시 호출됩니다. (RewardVideoAdListener 전용 콜백)
      * @param adItem 광고 아이템
-     * @param error 에러클래스 
+     * @param error 에러클래스
      */
     @Override
     public void onShowFail(AdItem adItem, AdError error) {
-        super.onShowFail(adItem, error)
-        Log.d( "MainActivity", "onShowFail : " + error?.message)
+        super.onShowFail(adItem, error);
+        Log.d("MainActivity", "onShowFail : " + error.getMessage());
     }
   ...
 });
 ```
+
+`verifyCode` 값과 전체 콜백 목록은 [AdListener 사용 방법](#7-adlistener-사용-방법)을 참고하세요.
 
 
 
