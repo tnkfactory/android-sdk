@@ -20,6 +20,10 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 
 ### Update Notice
 
+* 2026.08.27
+  * Android SDK v7.25.12 업데이트
+  * 리워드 비디오(WebView VAST) 광고에서 CTA 클릭이 동작하지 않던 문제 수정
+
 * 2025.11.04
   * Android SDK v7.23.86 업데이트
   * android 16 TLS 1.1오류 수정 

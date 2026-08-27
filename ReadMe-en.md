@@ -20,6 +20,10 @@ Tnk Pub SDK supports the following ad formats:
 
 ### Update Notice
 
+* 2026.08.27
+  * Android SDK v7.25.12 update
+  * Fixed an issue where the CTA click did not work on reward video (WebView VAST) ads
+
 * 2025.11.04
   * Android SDK v7.23.86 update
   * Fixed a TLS 1.1 error on Android 16
