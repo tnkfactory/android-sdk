@@ -103,11 +103,17 @@ AndroidManifest.xml 파일에 아래의 권한을 추가해주세요.
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 ```
 
-Proguard 를 사용하시는 경우 Proguard 설정 파일에 아래의 내용을 반드시 넣어주세요.
+#### Proguard / R8
+
+SDK 7.25.16 부터 TNK PUB SDK 가 자체 ProGuard/R8 규칙을 AAR 에 포함하므로, 매체 앱에 별도의 `-keep` 규칙을 추가할 필요가 없습니다.
+
+기존에 아래의 규칙을 Proguard 설정 파일에 넣어 두었다면 **제거해 주세요.** 이 블랭킷 규칙은 앱의 R8 이 코드를 줄이기·최적화·난독화하는 것을 막습니다.
 
 ```proguard
- -keep class com.tnkfactory.** { *;}
+-keep class com.tnkfactory.** { *;}
 ```
+
+> 7.25.15 이하 버전을 사용하는 경우에는 AAR 에 해당 규칙이 포함되어 있지 않으므로, 위 규칙이 계속 필요합니다. 7.25.16 이상으로 업데이트한 뒤 제거해 주세요.
 
 ### Test Flight
 
