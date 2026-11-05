@@ -20,6 +20,10 @@ Tnk Pub SDK supports the following ad formats:
 
 ### Update Notice
 
+* 2026.11.05
+  * Android SDK v7.25.17 update
+  * SDK now bundles its own ProGuard/R8 rules in the AAR (no `-keep` rules needed in the media app)
+
 * 2026.08.27
   * Android SDK v7.25.12 update
   * Fixed an issue where the CTA click did not work on reward video (WebView VAST) ads
