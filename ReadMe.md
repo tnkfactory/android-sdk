@@ -20,6 +20,11 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 
 ### Update Notice
 
+* 2026.11.12
+  * Android SDK v7.25.19 업데이트
+  * SDK 에 포함된 ProGuard/R8 규칙을 줄여, 매체 앱 R8 이 SDK 코드를 더 많이 줄이기·최적화할 수 있도록 개선 (Google Play 최적화 점수 개선, 공개 API 변경 없음)
+  * 동영상 광고(VAST) 추적 URL 이 전송되지 않던 문제 수정
+
 * 2026.11.05
   * Android SDK v7.25.17 업데이트
   * SDK 자체 ProGuard/R8 규칙을 AAR 에 포함 (매체 앱의 `-keep` 규칙 불필요)

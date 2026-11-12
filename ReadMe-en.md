@@ -20,6 +20,11 @@ Tnk Pub SDK supports the following ad formats:
 
 ### Update Notice
 
+* 2026.11.12
+  * Android SDK v7.25.19 update
+  * Reduced the ProGuard/R8 rules bundled in the SDK so the media app's R8 can shrink and optimize more of the SDK code (improves the Google Play optimization score; no public API changes)
+  * Fixed an issue where video ad (VAST) tracking URLs were not sent
+
 * 2026.11.05
   * Android SDK v7.25.17 update
   * SDK now bundles its own ProGuard/R8 rules in the AAR (no `-keep` rules needed in the media app)
